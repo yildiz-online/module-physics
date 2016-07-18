@@ -42,10 +42,20 @@ public interface DynamicBody {
 
     /**
      * Set the body position.
+     * @param x Body position X value.
+     * @param y Body position Y value.
+     * @param z Body position Z value.
+     */
+    void setPosition(float x, float y, float z);
+
+    /**
+     * Set the body position.
      *
      * @param position New position.
      */
-    void setPosition(Point3D position);
+    default void setPosition(Point3D position) {
+        this.setPosition(position.x, position.y, position.z);
+    }
 
     /**
      * @return The current direction.
@@ -54,10 +64,20 @@ public interface DynamicBody {
 
     /**
      * Set the body direction.
+     * @param x Body direction X value.
+     * @param y Body direction Y value.
+     * @param z Body direction Z value.
+     */
+    void setDirection(float x, float y, float z);
+
+    /**
+     * Set the body direction.
      *
      * @param direction New direction.
      */
-    void setDirection(Point3D direction);
+    default void setDirection(Point3D direction) {
+        this.setDirection(direction.x, direction.y, direction.z);
+    }
 
     /**
      * Set the body orientation.

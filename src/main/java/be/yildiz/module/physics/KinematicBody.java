@@ -26,6 +26,7 @@
 package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
+import be.yildiz.common.vector.Point3D;
 
 /**
  * Physics object manually moved.
@@ -44,6 +45,14 @@ public interface KinematicBody {
     void setDirection(float dirX, float dirY, float dirZ);
 
     /**
+     * Set the body direction.
+     * @param direction Direction value.
+     */
+    default void setDirection(final Point3D direction) {
+        this.setDirection(direction.x, direction.y, direction.z);
+    }
+
+    /**
      * Set the body position.
      *
      * @param posX Position X value.
@@ -51,6 +60,14 @@ public interface KinematicBody {
      * @param posZ Position Z value.
      */
     void setPosition(float posX, float posY, float posZ);
+
+    /**
+     * Set the body position.
+     * @param position Position value.
+     */
+    default void setPosition(final Point3D position) {
+        this.setPosition(position.x, position.y, position.z);
+    }
 
     /**
      * Rotate the body.

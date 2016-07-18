@@ -53,14 +53,14 @@ public abstract class AbstractPhysicEngine {
      * Update the physic world to its latest state.
      */
     public final void update() {
-        this.worlds.stream().forEach(PhysicWorld::update);
+        this.worlds.forEach(PhysicWorld::update);
     }
 
     /**
      * Close the engine and free its resources.
      */
     public final void close() {
-        this.worlds.stream().forEach(PhysicWorld::delete);
+        this.worlds.forEach(PhysicWorld::delete);
         this.worlds.clear();
         Logger.info("Physic engine closed.");
     }
