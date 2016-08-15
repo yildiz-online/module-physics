@@ -54,11 +54,11 @@ public final class RaycastResult {
      * @param contactY Contact Y coordinate value.
      * @param contactZ Contact Z coordinate value.
      * @param idValue  Id of the object found by the ray.
-     * @Ensures this.id.equals(EntityId.get(idValue)) == true
-     * @Ensures this.contact.equals(Point3D.xyz(contactX, contactY, contactZ))
-     * @Ensures this.id != null
-     * @Ensures this.contact != null
      */
+    //@Ensures this.id.equals(EntityId.get(idValue)) == true
+    //@Ensures this.contact.equals(Point3D.xyz(contactX, contactY, contactZ))
+    //@Ensures this.id != null
+    //@Ensures this.contact != null
     public RaycastResult(final float contactX, final float contactY, final float contactZ, final long idValue) {
         this(Point3D.xyz(contactX, contactY, contactZ), EntityId.get(idValue));
     }
@@ -68,11 +68,11 @@ public final class RaycastResult {
      *
      * @param contact Contact position.
      * @param id      Collided object id.
-     * @Requires contact != null
-     * @Requires id != null;
-     * @Ensures this.contact == contact
-     * @Ensures this.id == id
      */
+    //@Requires contact != null
+    //@Requires id != null;
+    //@Ensures this.contact == contact
+    //@Ensures this.id == id
     public RaycastResult(final Point3D contact, final EntityId id) {
         super();
         this.contact = contact;

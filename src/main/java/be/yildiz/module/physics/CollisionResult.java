@@ -56,7 +56,7 @@ public final class CollisionResult {
 
     /**
      * @param o Other object to test.
-     * @return <true> if o is not null, is a CollisionResult and contains the same Ids as this object(order does not matter.)
+     * @return true if o is not null, is a CollisionResult and contains the same Ids as this object(order does not matter.)
      */
     @Override
     public boolean equals(final Object o) {

@@ -44,8 +44,8 @@ public final class PhysicMesh {
      *
      * @param path Path and name of the mesh to use.
      * @throws NullPointerException If path is null.
-     * @Ensures this.file == path
      */
+    //@Ensures this.file == path
     public PhysicMesh(@NonNull final String path) {
         super();
         this.file = path;

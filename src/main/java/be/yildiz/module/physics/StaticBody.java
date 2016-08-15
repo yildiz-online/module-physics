@@ -48,21 +48,20 @@ public interface StaticBody {
      * Once sleeping a body will no longer interact with its surrounding.
      *
      * @param sleeping
-     * @Ensures this.body will no longer interact if sleeping == true or will interact if sleeping == false.
      */
+    //@Ensures this.body will no longer interact if sleeping == true or will interact if sleeping == false.
     void sleep(boolean sleeping);
 
     /**
      * @return This body unique id.
-     * @Ensures return value != null
      */
+    //@Ensures return value != null
     EntityId getId();
 
     /**
      * Delete the body and remove it from its world.
-     *
-     * @Ensures The body is deleted.
-     * @Ensures The associated world no longer contains this body.
      */
+    //@Ensures The body is deleted.
+    //@Ensures The associated world no longer contains this body.
     void delete();
 }
