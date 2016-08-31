@@ -26,14 +26,13 @@
 package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
-import lombok.AllArgsConstructor;
+import be.yildiz.common.id.EntityIdentifiable;
 
 /**
  * Contains the result of a collision between 2 objects.
  *
  * @author Grégory Van den Borre
  */
-@AllArgsConstructor
 public final class CollisionResult {
 
     /**
@@ -45,6 +44,42 @@ public final class CollisionResult {
      * Collided object Id.
      */
     public final EntityId object2;
+
+    CollisionResult(final EntityId e1, final EntityId e2) {
+        super();
+        this.object1 = e1;
+        this.object2 = e2;
+    }
+
+    public boolean contains(final EntityIdentifiable entity) {
+        return this.contains(entity.getId());
+    }
+
+    public boolean contains(final EntityIdentifiable entity, final EntityIdentifiable entity2) {
+        return this.contains(entity.getId(), entity2.getId());
+    }
+
+    public boolean containsAndNot(final EntityIdentifiable entity, final EntityIdentifiable entity2) {
+        return this.containsAndNot(entity.getId(), entity2.getId());
+    }
+
+    /**
+     * Check if an id is implied in this collision.
+     *
+     * @param id Id to check.
+     * @return <code>true</code> if the provided id is implied in this collision.
+     */
+    public boolean contains(final EntityId id) {
+        return this.object1.equals(id) || this.object2.equals(id);
+    }
+
+    public boolean contains(final EntityId id, final EntityId id2) {
+        return (this.object1.equals(id) && this.object2.equals(id2)) || (this.object2.equals(id) && this.object1.equals(id2));
+    }
+
+    public boolean containsAndNot(final EntityId id, final EntityId id2) {
+        return (this.object1.equals(id) && !this.object2.equals(id2)) || (this.object2.equals(id) && !this.object1.equals(id2));
+    }
 
     /**
      * @return The sum of the 2 Id hash codes.

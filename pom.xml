@@ -4,7 +4,6 @@
   <name>Yildiz Module Physics</name>
   <description>Module handling the physics engine.</description>
 
-  <groupId>be.yildiz-games</groupId>
   <artifactId>module-physics</artifactId>
   <version>1.0.1-SNAPSHOT</version>
 
@@ -23,7 +22,7 @@
 
   <properties>
     <version.bom-junit>1.0.0</version.bom-junit>
-    <version.common-shared>1.0.1</version.common-shared>
+    <version.common-shared>1.0.2-SNAPSHOT</version.common-shared>
   </properties>
 
   <dependencyManagement>
