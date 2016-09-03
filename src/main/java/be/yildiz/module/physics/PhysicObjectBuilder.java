@@ -25,47 +25,76 @@
 
 package be.yildiz.module.physics;
 
+import be.yildiz.common.id.EntityId;
+import be.yildiz.common.shape.Box;
+import be.yildiz.common.shape.Sphere;
 import be.yildiz.common.vector.Point3D;
 
 /**
- * A dynamic body is moved by physics forces.
- *
  * @author Grégory Van den Borre
  */
-public interface DynamicBody extends MovableBody {
+public abstract class PhysicObjectBuilder {
 
-    /**
-     * Set the body position.
-     * @param x Body position X value.
-     * @param y Body position Y value.
-     * @param z Body position Z value.
-     */
-    void setPosition(float x, float y, float z);
+    protected EntityId id;
 
-    /**
-     * Set the body position.
-     *
-     * @param position New position.
-     */
-    default void setPosition(Point3D position) {
-        this.setPosition(position.x, position.y, position.z);
+    protected float mass = 0f;
+
+    protected Box box;
+
+    protected Sphere sphere;
+
+    protected PhysicMesh mesh;
+
+    protected Point3D position = Point3D.ZERO;
+
+    protected Point3D direction = Point3D.BASE_DIRECTION;
+
+    public PhysicObjectBuilder withId(final long id) {
+        this.id = EntityId.get(id);
+        return this;
     }
 
-    /**
-     * Set the body direction.
-     * @param x Body direction X value.
-     * @param y Body direction Y value.
-     * @param z Body direction Z value.
-     */
-    void setDirection(float x, float y, float z);
-
-    /**
-     * Set the body direction.
-     *
-     * @param direction New direction.
-     */
-    default void setDirection(Point3D direction) {
-        this.setDirection(direction.x, direction.y, direction.z);
+    public PhysicObjectBuilder withId(final EntityId id) {
+        this.id = id;
+        return this;
     }
+
+    public PhysicObjectBuilder withMass(final float mass) {
+        this.mass = mass;
+        return this;
+    }
+
+    public PhysicObjectBuilder withShape(Box box) {
+        this.box = box;
+        return this;
+    }
+
+    public PhysicObjectBuilder withShape(Sphere sphere) {
+        this.sphere = sphere;
+        return this;
+    }
+
+    public PhysicObjectBuilder withShape(PhysicMesh mesh) {
+        this.mesh = mesh;
+        return this;
+    }
+
+    public PhysicObjectBuilder atPosition(Point3D position) {
+        this.position = position;
+        return this;
+    }
+
+    public PhysicObjectBuilder withDirection(Point3D direction) {
+        this.direction = direction;
+        return this;
+    }
+
+    public abstract StaticBody buildStatic();
+
+    public abstract KinematicBody buildKinematic();
+
+    public abstract DynamicBody buildDynamic();
+
+    public abstract GhostObject buildGhost();
 
 }

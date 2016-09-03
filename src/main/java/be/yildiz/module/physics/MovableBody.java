@@ -25,11 +25,64 @@
 
 package be.yildiz.module.physics;
 
+import be.yildiz.common.vector.Point3D;
+import be.yildiz.common.vector.Quaternion;
+
 /**
- * Physics object manually moved.
- *
  * @author Grégory Van den Borre
  */
-public interface KinematicBody extends MovableBody {
+public interface MovableBody extends BaseBody {
 
+    /**
+     * Set the body direction.
+     *
+     * @param dirX Direction X value.
+     * @param dirY Direction Y value.
+     * @param dirZ Direction Z value.
+     */
+    void setDirection(float dirX, float dirY, float dirZ);
+
+    /**
+     * Set the body direction.
+     * @param direction Direction value.
+     */
+    default void setDirection(final Point3D direction) {
+        this.setDirection(direction.x, direction.y, direction.z);
+    }
+
+    /**
+     * Set the body position.
+     *
+     * @param posX Position X value.
+     * @param posY Position Y value.
+     * @param posZ Position Z value.
+     */
+    void setPosition(float posX, float posY, float posZ);
+
+    /**
+     * Set the body position.
+     * @param position Position value.
+     */
+    default void setPosition(final Point3D position) {
+        this.setPosition(position.x, position.y, position.z);
+    }
+
+    /**
+     * Rotate the body.
+     *
+     * @param x Rotation X value.
+     * @param y Rotation Y value.
+     * @param z Rotation Z value.
+     * @param w Rotation W value.
+     */
+    void setOrientation(float x, float y, float z, float w);
+
+    /**
+     * Set the body orientation.
+     *
+     * @param q New orientation.
+     */
+    default void setOrientation(Quaternion q) {
+        this.setOrientation(q.w, q.x, q.y, q.z);
+    }
 }

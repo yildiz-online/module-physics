@@ -26,8 +26,6 @@
 package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
-import be.yildiz.common.shape.Box;
-import be.yildiz.common.shape.Sphere;
 import be.yildiz.common.vector.Point3D;
 import lombok.NonNull;
 
@@ -79,6 +77,11 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
             return EntityId.WORLD;
         }
 
+        @Override
+        public PhysicObjectBuilder createBuilder() {
+            return null;
+        }
+
         /**
          * Dummy implementation.
          *
@@ -118,32 +121,6 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
         /**
          * Dummy implementation.
          *
-         * @param id       Id retrieved when this ghost collide, must be unique.
-         * @param box      Ghost shape.
-         * @param position Initial object position.
-         * @return null.
-         */
-        @Override
-        public GhostObject createGhostObject(EntityId id, Box box, Point3D position) {
-            return null;
-        }
-
-        /**
-         * Dummy implementation.
-         *
-         * @param id       Id retrieved when this ghost collide, must be unique.
-         * @param sphere   Ghost shape.
-         * @param position Initial object position.
-         * @return null.
-         */
-        @Override
-        public GhostObject createGhostObject(EntityId id, Sphere sphere, Point3D position) {
-            return null;
-        }
-
-        /**
-         * Dummy implementation.
-         *
          * @return 0, 0, 0
          */
         @Override
@@ -168,51 +145,6 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
         @Override
         public void delete() {
             //Dummy implementation.
-        }
-
-        @Override
-        public StaticBody createStaticBody(EntityId id, Box box, Point3D position, Point3D direction) {
-            return null;
-        }
-
-        @Override
-        public StaticBody createStaticBody(EntityId id, Sphere sphere, Point3D position, Point3D direction) {
-            return null;
-        }
-
-        @Override
-        public StaticBody createStaticBody(EntityId id, PhysicMesh mesh, Point3D position, Point3D direction) {
-            return null;
-        }
-
-        @Override
-        public KinematicBody createKinematicBody(EntityId id, Box box, Point3D position) {
-            return null;
-        }
-
-        @Override
-        public KinematicBody createKinematicBody(EntityId id, Sphere sphere, Point3D position) {
-            return null;
-        }
-
-        @Override
-        public KinematicBody createKinematicBody(EntityId id, PhysicMesh mesh, Point3D position) {
-            return null;
-        }
-
-        @Override
-        public DynamicBody createDynamicBody(EntityId id, Box box, Point3D position, float mass) {
-            return null;
-        }
-
-        @Override
-        public DynamicBody createDynamicBody(EntityId id, Sphere sphere, Point3D position, float mass) {
-            return null;
-        }
-
-        @Override
-        public DynamicBody createDynamicBody(EntityId id, PhysicMesh mesh, Point3D position, float mass) {
-            return null;
         }
 
         /**

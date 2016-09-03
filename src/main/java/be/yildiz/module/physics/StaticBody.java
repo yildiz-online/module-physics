@@ -25,43 +25,11 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.id.EntityId;
-
 /**
  * A static body will nor move neither be affected by physic forces.
  *
  * @author Grégory Van den Borre
  */
-public interface StaticBody {
+public interface StaticBody extends BaseBody {
 
-    /**
-     * Scale the body along 3 axes.
-     *
-     * @param x X scaling value.
-     * @param y Y scaling value.
-     * @param z Z scaling value.
-     */
-    void scale(float x, float y, float z);
-
-    /**
-     * Activate or deactivate this body in the world.
-     * Once sleeping a body will no longer interact with its surrounding.
-     *
-     * @param sleeping
-     */
-    //@Ensures this.body will no longer interact if sleeping == true or will interact if sleeping == false.
-    void sleep(boolean sleeping);
-
-    /**
-     * @return This body unique id.
-     */
-    //@Ensures return value != null
-    EntityId getId();
-
-    /**
-     * Delete the body and remove it from its world.
-     */
-    //@Ensures The body is deleted.
-    //@Ensures The associated world no longer contains this body.
-    void delete();
 }

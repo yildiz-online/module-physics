@@ -26,8 +26,6 @@
 package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
-import be.yildiz.common.shape.Box;
-import be.yildiz.common.shape.Sphere;
 import be.yildiz.common.vector.Point3D;
 import lombok.NonNull;
 
@@ -53,112 +51,12 @@ public interface PhysicWorld extends World {
      */
     EntityId throwSimpleRay(Point3D origin, Point3D direction, float distance);
 
+    PhysicObjectBuilder createBuilder();
+
     /**
      * Called when then engine stops.
      */
     void delete();
-
-    /**
-     * Create a static physic box, it a given Id, cannot move, and will not be affected in any way by physics dynamic, but is collidable. It is usually used to represent collidable object like
-     * buildings, trees...
-     *
-     * @param id        Id to retrieve when object is selected, has collisions...
-     * @param box       Box to use physic resource.
-     * @param position  Object immutable position, InvalidParamException is thrown in case of null parameter.
-     * @param direction Object immutable direction, InvalidParamException is thrown in case of null parameter.
-     * @return The built object.
-     */
-    StaticBody createStaticBody(EntityId id, Box box, Point3D position, Point3D direction);
-
-    /**
-     * Create a static physic sphere, it a given Id, cannot move, and will not be affected in any way by physics dynamic, but is collidable. It is usually used to represent collidable object like
-     * buildings, trees...
-     *
-     * @param id        Id to retrieve when object is selected, has collisions...
-     * @param sphere    Sphere to use physic resource.
-     * @param position  Object immutable position, InvalidParamException is thrown in case of null parameter.
-     * @param direction Object immutable direction, InvalidParamException is thrown in case of null parameter.
-     * @return The built object.
-     */
-    StaticBody createStaticBody(EntityId id, Sphere sphere, Point3D position, Point3D direction);
-
-    /**
-     * Create a static physic body, it a given Id, cannot move, and will not be affected in any way by physics dynamic, but is collidable. It is usually used to represent collidable object like
-     * buildings, trees...
-     *
-     * @param id        Id to retrieve when object is selected, has collisions...
-     * @param mesh      Mesh to use physic resource.
-     * @param position  Object immutable position, InvalidParamException is thrown in case of null parameter.
-     * @param direction Object immutable direction, InvalidParamException is thrown in case of null parameter.
-     * @return The built object.
-     */
-    StaticBody createStaticBody(EntityId id, PhysicMesh mesh, Point3D position, Point3D direction);
-
-    /**
-     * Create a movable physic box, it has a given Id and will not be affected in any way by physics dynamic, but is collidable.
-     * It is usually used to represent playable or movable object like characters, vehicles...
-     *
-     * @param id       Id to retrieve when object is selected, has collisions...
-     * @param box      Box to use physic resource.
-     * @param position Object initial position.
-     * @return The built body.
-     */
-    KinematicBody createKinematicBody(EntityId id, Box box, Point3D position);
-
-    /**
-     * Create a movable physic sphere, it has a given Id and will not be affected in any way by physics dynamic, but is collidable.
-     * It is usually used to represent playable or movable object like characters, vehicles...
-     *
-     * @param id       Id to retrieve when object is selected, has collisions...
-     * @param sphere   Sphere to use physic resource.
-     * @param position Object initial position.
-     * @return The built body.
-     */
-    KinematicBody createKinematicBody(EntityId id, Sphere sphere, Point3D position);
-
-    /**
-     * Create a movable physic mesh, it has a given Id and will not be affected in any way by physics dynamic, but is collidable. It is usually used to represent playable or movable object like
-     * characters, vehicles...
-     *
-     * @param id       Id to retrieve when object is selected, has collisions...
-     * @param mesh     Mesh to use physic resource.
-     * @param position Object initial position.
-     * @return The built object.
-     */
-    KinematicBody createKinematicBody(EntityId id, PhysicMesh mesh, Point3D position);
-
-    /**
-     * Create a dynamic physic box, it has a given Id and will be affected by physics dynamic.
-     *
-     * @param id       Id to retrieve when object is selected, has collisions...
-     * @param box      Box to use physic resource.
-     * @param position Object initial position.
-     * @param mass     Object mass.
-     * @return The built body.
-     */
-    DynamicBody createDynamicBody(EntityId id, Box box, Point3D position, float mass);
-
-    /**
-     * Create a dynamic physic sphere, it has a given Id and will be affected by physics dynamic.
-     *
-     * @param id       Id to retrieve when object is selected, has collisions...
-     * @param sphere   Sphere to use physic resource.
-     * @param position Object initial position.
-     * @param mass     Object mass.
-     * @return The built body.
-     */
-    DynamicBody createDynamicBody(EntityId id, Sphere sphere, Point3D position, float mass);
-
-    /**
-     * Create a dynamic physic mesh, it has a given Id and will be affected by physics dynamic.
-     *
-     * @param id       Id to retrieve when object is selected, has collisions...
-     * @param mesh     Mesh to use physic resource.
-     * @param position Object initial position.
-     * @param mass     Object mass.
-     * @return The built body.
-     */
-    DynamicBody createDynamicBody(EntityId id, PhysicMesh mesh, Point3D position, float mass);
 
     /**
      * Add a collision listener to be notified when collision occurs.
