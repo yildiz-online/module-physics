@@ -25,47 +25,11 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.vector.Point3D;
-
 /**
  * A dynamic body is moved by physics forces.
  *
  * @author Grégory Van den Borre
  */
 public interface DynamicBody extends MovableBody {
-
-    /**
-     * Set the body position.
-     * @param x Body position X value.
-     * @param y Body position Y value.
-     * @param z Body position Z value.
-     */
-    void setPosition(float x, float y, float z);
-
-    /**
-     * Set the body position.
-     *
-     * @param position New position.
-     */
-    default void setPosition(Point3D position) {
-        this.setPosition(position.x, position.y, position.z);
-    }
-
-    /**
-     * Set the body direction.
-     * @param x Body direction X value.
-     * @param y Body direction Y value.
-     * @param z Body direction Z value.
-     */
-    void setDirection(float x, float y, float z);
-
-    /**
-     * Set the body direction.
-     *
-     * @param direction New direction.
-     */
-    default void setDirection(Point3D direction) {
-        this.setDirection(direction.x, direction.y, direction.z);
-    }
 
 }
