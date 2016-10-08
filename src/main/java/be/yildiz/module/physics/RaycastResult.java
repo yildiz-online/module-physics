@@ -70,7 +70,7 @@ public final class RaycastResult {
      * @param id      Collided object id.
      */
     //@Requires contact != null
-    //@Requires id != null;
+    //@Requires id != null
     //@Ensures this.contact == contact
     //@Ensures this.id == id
     public RaycastResult(final Point3D contact, final EntityId id) {
