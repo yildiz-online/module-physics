@@ -47,6 +47,7 @@ public final class CollisionResult {
         super();
         this.object1 = e1;
         this.object2 = e2;
+        assert this.invariant();
     }
 
     public boolean contains(final EntityIdentifiable entity) {
@@ -103,5 +104,15 @@ public final class CollisionResult {
     @Override
     public String toString() {
         return "Collision: " + this.object1 + " : " + this.object2;
+    }
+
+    private boolean invariant() {
+        if(this.object1 == null) {
+            throw new IllegalArgumentException("Object1 cannot be null.");
+        }
+        if(this.object2 == null) {
+            throw new IllegalArgumentException("Object2 cannot be null.");
+        }
+        return true;
     }
 }
