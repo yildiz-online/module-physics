@@ -26,6 +26,7 @@ package be.yildiz.module.physics;
 import be.yildiz.common.Assert;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.EntityIdentifiable;
+import be.yildiz.common.log.Logger;
 
 /**
  * Contains the result of a collision between 2 objects.
@@ -123,10 +124,12 @@ public final class CollisionResult {
 
     private boolean invariant() {
         if(this.object1 == null) {
-            throw new IllegalArgumentException("Object1 cannot be null.");
+            Logger.error("Object1 cannot be null.");
+            return false;
         }
         if(this.object2 == null) {
-            throw new IllegalArgumentException("Object2 cannot be null.");
+            Logger.error("Object2 cannot be null.");
+            return false;
         }
         return true;
     }

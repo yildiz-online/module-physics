@@ -55,12 +55,12 @@ public class CollisionResultTest {
             Assert.assertEquals(id2, r.object2);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withObject1Null() {
             new CollisionResult(null, id2);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withObject2Null() {
             new CollisionResult(id1, null);
         }
@@ -98,37 +98,37 @@ public class CollisionResultTest {
             Assert.assertFalse(r.contains(() -> EntityId.WORLD, enid2));
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withNull() {
             CollisionResult r = givenACollisionResult();
             r.contains((EntityId)null);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withNullParamOne() {
             CollisionResult r = givenACollisionResult();
             r.contains(null, id2);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withNullParamTwo() {
             CollisionResult r = givenACollisionResult();
             r.contains(id1, null);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withNullIdentifiable() {
             CollisionResult r = givenACollisionResult();
             r.contains((EntityIdentifiable) null);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withNullIdentifiableParamOne() {
             CollisionResult r = givenACollisionResult();
             r.contains(null, enid2);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withNullIdentifiableParamTwo() {
             CollisionResult r = givenACollisionResult();
             r.contains(enid1, null);
@@ -149,13 +149,13 @@ public class CollisionResultTest {
             Assert.assertTrue(r.containsAndNot(EntityId.WORLD, id1));
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withParamOneNull() {
             CollisionResult r = givenACollisionResult();
             r.containsAndNot(null, enid2);
         }
 
-        @Test(expected = IllegalArgumentException.class)
+        @Test(expected = AssertionError.class)
         public void withParamTwoNull() {
             CollisionResult r = givenACollisionResult();
             r.containsAndNot(enid1, null);
