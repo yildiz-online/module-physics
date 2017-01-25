@@ -23,8 +23,10 @@
 
 package be.yildiz.module.physics;
 
+import be.yildiz.common.Assert;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.EntityIdentifiable;
+import com.google.java.contract.ThrowEnsures;
 
 /**
  * Contains the result of a collision between 2 objects.
@@ -51,14 +53,19 @@ public final class CollisionResult {
     }
 
     public boolean contains(final EntityIdentifiable entity) {
+        assert Assert.notNull(entity);
         return this.contains(entity.getId());
     }
 
     public boolean contains(final EntityIdentifiable entity, final EntityIdentifiable entity2) {
+        assert Assert.notNull(entity);
+        assert Assert.notNull(entity2);
         return this.contains(entity.getId(), entity2.getId());
     }
 
     public boolean containsAndNot(final EntityIdentifiable entity, final EntityIdentifiable entity2) {
+        assert Assert.notNull(entity);
+        assert Assert.notNull(entity2);
         return this.containsAndNot(entity.getId(), entity2.getId());
     }
 
@@ -69,15 +76,24 @@ public final class CollisionResult {
      * @return <code>true</code> if the provided id is implied in this collision.
      */
     public boolean contains(final EntityId id) {
+        assert Assert.notNull(id);
         return this.object1.equals(id) || this.object2.equals(id);
     }
 
     public boolean contains(final EntityId id, final EntityId id2) {
+        assert Assert.notNull(id);
+        assert Assert.notNull(id2);
         return (this.object1.equals(id) && this.object2.equals(id2)) || (this.object2.equals(id) && this.object1.equals(id2));
     }
 
     public boolean containsAndNot(final EntityId id, final EntityId id2) {
-        return (this.object1.equals(id) && !this.object2.equals(id2)) || (this.object2.equals(id) && !this.object1.equals(id2));
+        assert Assert.notNull(id);
+        assert Assert.notNull(id2);
+
+        return (this.object1.equals(id) && !this.object2.equals(id2))
+                || (!this.object1.equals(id2) && this.object2.equals(id))
+                || (!this.object1.equals(id) && this.object2.equals(id2))
+                || (this.object1.equals(id2) && !this.object2.equals(id));
     }
 
     /**
