@@ -26,7 +26,6 @@ package be.yildiz.module.physics;
 import be.yildiz.common.Assert;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.EntityIdentifiable;
-import com.google.java.contract.ThrowEnsures;
 
 /**
  * Contains the result of a collision between 2 objects.

@@ -149,6 +149,29 @@ public class CollisionResultTest {
             Assert.assertTrue(r.containsAndNot(EntityId.WORLD, id1));
         }
 
+        @Test(expected = IllegalArgumentException.class)
+        public void withParamOneNull() {
+            CollisionResult r = givenACollisionResult();
+            r.containsAndNot(null, enid2);
+        }
+
+        @Test(expected = IllegalArgumentException.class)
+        public void withParamTwoNull() {
+            CollisionResult r = givenACollisionResult();
+            r.containsAndNot(enid1, null);
+        }
+
+        @Test
+        public void happyFlowIdentifiable() {
+            CollisionResult r = givenACollisionResult();
+            Assert.assertTrue(r.contains(enid1, enid2));
+            Assert.assertFalse(r.contains(() -> EntityId.WORLD));
+            Assert.assertTrue(r.containsAndNot(enid1, () -> EntityId.WORLD));
+            Assert.assertTrue(r.containsAndNot(() -> EntityId.WORLD, enid2));
+            Assert.assertTrue(r.containsAndNot(enid2, () -> EntityId.WORLD));
+            Assert.assertTrue(r.containsAndNot(() -> EntityId.WORLD, enid1));
+        }
+
         @Test
         public void containsBoth() {
             CollisionResult r = givenACollisionResult();
@@ -217,6 +240,15 @@ public class CollisionResultTest {
         public void differentType() {
             CollisionResult r = givenACollisionResult();
             Assert.assertFalse(r.equals("ok"));
+        }
+    }
+
+    public static class ToString {
+
+        @Test
+        public void happyFlow() {
+            CollisionResult r = givenACollisionResult();
+            Assert.assertEquals("Collision: " + id1 + " : " + id2, r.toString());
         }
     }
 }
