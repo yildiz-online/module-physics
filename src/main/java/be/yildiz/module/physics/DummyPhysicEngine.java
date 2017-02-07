@@ -77,7 +77,27 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
 
         @Override
         public PhysicObjectBuilder createBuilder() {
-            return null;
+            return new PhysicObjectBuilder() {
+                @Override
+                public StaticBody buildStatic() {
+                    return new DummyBody();
+                }
+
+                @Override
+                public KinematicBody buildKinematic() {
+                    return new DummyBody();
+                }
+
+                @Override
+                public DynamicBody buildDynamic() {
+                    return new DummyBody();
+                }
+
+                @Override
+                public GhostObject buildGhost() {
+                    return new DummyBody();
+                }
+            };
         }
 
         /**
@@ -107,9 +127,9 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
         /**
          * Dummy implementation.
          *
-         * @param gravityX Gravity value on X axis(horizontal).
-         * @param gravityY Gravity value on Y axis(vertical).
-         * @param gravityZ
+         * @param gravityX Gravity value on X axis(horizontal) unused.
+         * @param gravityY Gravity value on Y axis(vertical) unused.
+         * @param gravityZ Gravity value on Y axis(depth) unused.
          */
         @Override
         public void setGravity(final float gravityX, final float gravityY, final float gravityZ) {
