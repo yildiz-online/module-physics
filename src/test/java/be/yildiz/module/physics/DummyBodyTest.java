@@ -23,10 +23,12 @@
 
 package be.yildiz.module.physics;
 
+import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.vector.Point3D;
 import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 /**
  * @author Grégory Van den Borre
@@ -57,4 +59,30 @@ public class DummyBodyTest {
     public void getAbsoluteDirectionTest() {
         Assert.assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getAbsoluteDirection());
     }
+
+    @Test
+    public void attachToTest() {
+        new DummyBody().attachTo(Mockito.mock(Movable.class));
+    }
+
+    @Test
+    public void addChildTest() {
+        new DummyBody().attachTo(Mockito.mock(Movable.class));
+    }
+
+    @Test
+    public void detachTest() {
+        new DummyBody().detach(Mockito.mock(Movable.class));
+    }
+
+    @Test
+    public void attachToOptionalTest() {
+        new DummyBody().attachToOptional(Mockito.mock(Movable.class));
+    }
+
+    @Test
+    public void deleteTest() {
+        new DummyBody().delete();
+    }
+
 }
