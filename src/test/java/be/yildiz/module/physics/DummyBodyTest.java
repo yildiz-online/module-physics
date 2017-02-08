@@ -85,4 +85,18 @@ public class DummyBodyTest {
         new DummyBody().delete();
     }
 
+    @Test
+    public void setPositionTest() {
+        new DummyBody().setPosition(Point3D.ZERO);
+    }
+
+    @Test
+    public void setAbsolutePositionTest() {
+        new DummyBody().setAbsolutePosition(Point3D.ZERO);
+    }
+
+    @Test
+    public void setDirectionTest() {
+        new DummyBody().setDirection(Point3D.ZERO);
+    }
 }
