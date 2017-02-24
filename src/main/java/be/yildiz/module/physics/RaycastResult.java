@@ -25,14 +25,12 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.vector.Point3D;
-import lombok.Getter;
 
 /**
  * Contains the result of a ray collision.
  *
  * @author Grégory Van den Borre
  */
-@Getter
 public final class RaycastResult {
 
     /**
@@ -75,6 +73,14 @@ public final class RaycastResult {
         super();
         this.contact = contact;
         this.id = id;
+    }
+
+    public Point3D getContact() {
+        return contact;
+    }
+
+    public EntityId getId() {
+        return id;
     }
 
     @Override

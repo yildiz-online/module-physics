@@ -25,7 +25,6 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.vector.Point3D;
-import lombok.NonNull;
 
 /**
  * A physic world is a world where physic entities live, they can be static, kinematic or dynamic.
@@ -61,12 +60,12 @@ public interface PhysicWorld extends World {
      *
      * @param listener Listener to add.
      */
-    void addCollisionListener(@NonNull CollisionListener listener);
+    void addCollisionListener(CollisionListener listener);
 
     /**
      * Add a collision listener to be notified when collision occurs with ghost objects.
      *
      * @param listener Listener to add.
      */
-    void addGhostCollisionListener(@NonNull CollisionListener listener);
+    void addGhostCollisionListener(CollisionListener listener);
 }

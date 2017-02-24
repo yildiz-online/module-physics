@@ -25,7 +25,6 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.vector.Point3D;
-import lombok.NonNull;
 
 /**
  * dummy implementation for physic engine.
@@ -120,7 +119,9 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
          * @return World and 0,0,0
          */
         @Override
-        public RaycastResult throwRay(@NonNull final Point3D origin, @NonNull final Point3D destination) {
+        public RaycastResult throwRay(final Point3D origin, final Point3D destination) {
+            assert  origin != null;
+            assert  destination != null;
             return new RaycastResult(0, 0, 0, EntityId.WORLD.value);
         }
 
@@ -171,7 +172,7 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
          * @param listener
          */
         @Override
-        public void addCollisionListener(@NonNull CollisionListener listener) {
+        public void addCollisionListener(CollisionListener listener) {
             //Dummy implementation.
         }
 
@@ -181,7 +182,7 @@ public final class DummyPhysicEngine extends AbstractPhysicEngine {
          * @param listener
          */
         @Override
-        public void addGhostCollisionListener(@NonNull CollisionListener listener) {
+        public void addGhostCollisionListener(CollisionListener listener) {
             //Dummy implementation.
         }
     }

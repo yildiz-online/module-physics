@@ -50,7 +50,7 @@ public abstract class AbstractMovableObject implements Movable {
     /**
      * Optional parent object.
      */
-    private Optional<Movable> parent = Optional.empty();
+    private Movable parent = null;
 
     /**
      * Constructor.
@@ -70,12 +70,11 @@ public abstract class AbstractMovableObject implements Movable {
 
     @Override
     public final void setPosition(final Point3D newPosition) {
+        assert newPosition != null;
         this.position = newPosition;
-        if (this.parent.isPresent()) {
-            this.absolutePosition = this.parent.get().getAbsolutePosition().add(newPosition);
-        } else {
-            this.absolutePosition = this.position;
-        }
+        this.absolutePosition = Optional.ofNullable(this.parent)
+                .map(m -> m.getPosition().add(newPosition))
+                .orElse(newPosition);
         this.setPositionImpl(this.absolutePosition);
         for (Movable m : this.children) {
             m.setAbsolutePosition(m.getPosition().add(this.absolutePosition));
@@ -120,13 +119,13 @@ public abstract class AbstractMovableObject implements Movable {
     @Override
     public final void attachTo(Movable other) {
         other.addChild(this);
-        this.parent.ifPresent(p -> p.detach(this));
-        this.parent = Optional.of(other);
+        Optional.ofNullable(this.parent).ifPresent(p -> p.detach(this));
+        this.parent = other;
     }
 
     @Override
     public final void attachToOptional(Movable other) {
-
+        this.attachTo(other);
     }
 
     @Override

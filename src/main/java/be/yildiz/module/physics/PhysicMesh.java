@@ -23,8 +23,6 @@
 
 package be.yildiz.module.physics;
 
-import lombok.NonNull;
-
 /**
  * Contains the data for a physic mesh file.
  *
@@ -41,11 +39,12 @@ public final class PhysicMesh {
      * Build a PhysicMesh object from a file path.
      *
      * @param path Path and name of the mesh to use.
-     * @throws NullPointerException If path is null.
+     * @throws AssertionError If path is null.
      */
     //@Ensures this.file == path
-    public PhysicMesh(@NonNull final String path) {
+    public PhysicMesh(final String path) {
         super();
+        assert path != null : "Path shouldnt be null";
         this.file = path;
     }
 
