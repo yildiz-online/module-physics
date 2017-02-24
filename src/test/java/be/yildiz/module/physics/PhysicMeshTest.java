@@ -37,7 +37,7 @@ public class PhysicMeshTest {
         Assert.assertEquals("abc", p.file);
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = AssertionError.class)
     public void testConstructorNull() {
         new PhysicMesh(null);
     }
