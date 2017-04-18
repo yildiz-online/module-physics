@@ -32,6 +32,7 @@ import be.yildiz.common.vector.Quaternion;
  * @author Grégory Van den Borre
  */
 public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostObject {
+
     @Override
     public EntityId getId() {
         return EntityId.WORLD;
@@ -39,22 +40,22 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
 
     @Override
     public void attachTo(Movable other) {
-
+        //Does nothing
     }
 
     @Override
     public void detach(Movable other) {
-
+        //Does nothing
     }
 
     @Override
     public void addChild(Movable other) {
-
+        //Does nothing
     }
 
     @Override
     public void attachToOptional(Movable other) {
-
+        //Does nothing
     }
 
     @Override
@@ -69,7 +70,7 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
 
     @Override
     public void setAbsolutePosition(Point3D pos) {
-
+        //Does nothing
     }
 
     @Override
@@ -84,46 +85,46 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
 
     @Override
     public void scale(float x, float y, float z) {
-
+        //Does nothing
     }
 
     @Override
     public void sleep(boolean sleeping) {
-
+        //Does nothing
     }
 
     @Override
     public void delete() {
-
+        //Does nothing
     }
 
     @Override
     public void setDirection(float dirX, float dirY, float dirZ) {
-
+        //Does nothing
     }
 
     @Override
     public void setDirection(Point3D direction) {
-
+        //Does nothing
     }
 
     @Override
     public void setPosition(float posX, float posY, float posZ) {
-
+        //Does nothing
     }
 
     @Override
     public void setPosition(Point3D position) {
-
+        //Does nothing
     }
 
     @Override
     public void setOrientation(float x, float y, float z, float w) {
-
+        //Does nothing
     }
 
     @Override
     public void setOrientation(Quaternion q) {
-
+        //Does nothing
     }
 }
