@@ -57,18 +57,22 @@ public abstract class AbstractStaticObject implements Movable {
 
     @Override
     public final void attachTo(final Movable other) {
+        //Does nothing.
     }
 
     @Override
     public final void detach(final Movable other) {
+        //Does nothing.
     }
 
     @Override
     public final void addChild(final Movable other) {
+        //Does nothing.
     }
 
     @Override
     public final void attachToOptional(final Movable other) {
+        //Does nothing.
     }
 
     @Override
@@ -78,6 +82,7 @@ public abstract class AbstractStaticObject implements Movable {
 
     @Override
     public final void setPosition(final Point3D newPosition) {
+        //Does nothing.
     }
 
     @Override
@@ -87,6 +92,7 @@ public abstract class AbstractStaticObject implements Movable {
 
     @Override
     public final void setAbsolutePosition(final Point3D pos) {
+        //Does nothing.
     }
 
     @Override
@@ -96,6 +102,7 @@ public abstract class AbstractStaticObject implements Movable {
 
     @Override
     public final void setDirection(final Point3D newDirection) {
+        //Does nothing.
     }
 
     @Override
