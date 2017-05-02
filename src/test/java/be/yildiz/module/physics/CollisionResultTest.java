@@ -25,7 +25,9 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.EntityIdentifiable;
+import be.yildiz.common.log.Logger;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -48,6 +50,11 @@ public class CollisionResultTest {
 
     public static class Constructor {
 
+        @Before
+        public void init() {
+            Logger.disable();
+        }
+
         @Test
         public void happyFlow() {
             CollisionResult r = givenACollisionResult();
@@ -67,6 +74,11 @@ public class CollisionResultTest {
     }
 
     public static class Contains {
+
+        @Before
+        public void init() {
+            Logger.disable();
+        }
 
         @Test
         public void happyFlow() {
@@ -138,6 +150,11 @@ public class CollisionResultTest {
 
     public static class ContainsAndNot {
 
+        @Before
+        public void init() {
+            Logger.disable();
+        }
+
         @Test
         public void happyFlow() {
             CollisionResult r = givenACollisionResult();
@@ -187,6 +204,11 @@ public class CollisionResultTest {
 
     public static class HashCode {
 
+        @Before
+        public void init() {
+            Logger.disable();
+        }
+
         @Test
         public void happyFlow() {
             CollisionResult r = givenACollisionResult();
@@ -195,6 +217,11 @@ public class CollisionResultTest {
     }
 
     public static class Equals {
+
+        @Before
+        public void init() {
+            Logger.disable();
+        }
 
         @Test
         public void sameInstance() {
@@ -244,6 +271,11 @@ public class CollisionResultTest {
     }
 
     public static class ToString {
+
+        @Before
+        public void init() {
+            Logger.disable();
+        }
 
         @Test
         public void happyFlow() {
