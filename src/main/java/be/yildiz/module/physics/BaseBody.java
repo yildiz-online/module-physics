@@ -54,7 +54,7 @@ public interface BaseBody extends EntityIdentifiable {
      * Activate or deactivate this body in the world.
      * Once sleeping a body will no longer interact with its surrounding.
      *
-     * @param sleeping
+     * @param sleeping True to set the state to sleeping.
      */
     //@Ensures this.body will no longer interact if sleeping == true or will interact if sleeping == false.
     void sleep(boolean sleeping);
