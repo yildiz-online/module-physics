@@ -56,7 +56,7 @@ public final class RaycastResult {
     //@Ensures this.id != null
     //@Ensures this.contact != null
     public RaycastResult(final float contactX, final float contactY, final float contactZ, final long idValue) {
-        this(Point3D.xyz(contactX, contactY, contactZ), EntityId.get(idValue));
+        this(Point3D.valueOf(contactX, contactY, contactZ), EntityId.valueOf(idValue));
     }
 
     /**

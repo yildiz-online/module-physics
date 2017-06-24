@@ -38,17 +38,17 @@ public class RaycastResultTest {
         RaycastResult r = new RaycastResult(10, 15, 20, 8L);
         Assert.assertNotNull(r.getContact());
         Assert.assertNotNull(r.getId());
-        Assert.assertEquals(Point3D.xyz(10, 15, 20), r.getContact());
-        Assert.assertEquals(EntityId.get(8L), r.getId());
+        Assert.assertEquals(Point3D.valueOf(10, 15, 20), r.getContact());
+        Assert.assertEquals(EntityId.valueOf(8L), r.getId());
     }
 
     @Test
     public void testFullConstructorObject() {
-        RaycastResult r = new RaycastResult(Point3D.xyz(12, 7, 2), EntityId.get(15L));
+        RaycastResult r = new RaycastResult(Point3D.valueOf(12, 7, 2), EntityId.valueOf(15L));
         Assert.assertNotNull(r.getContact());
         Assert.assertNotNull(r.getId());
-        Assert.assertEquals(Point3D.xyz(12, 7, 2), r.getContact());
-        Assert.assertEquals(EntityId.get(15L), r.getId());
+        Assert.assertEquals(Point3D.valueOf(12, 7, 2), r.getContact());
+        Assert.assertEquals(EntityId.valueOf(15L), r.getId());
     }
 
 }
