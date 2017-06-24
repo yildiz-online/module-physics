@@ -40,8 +40,8 @@ public class AbstractMovableObjectTest {
         @Test
         public void happyFlow() {
             AbstractMovableObject o = givenAMovable(Point3D.ZERO);
-            o.setPosition(Point3D.xyz(1,2,3));
-            Assert.assertEquals(Point3D.xyz(1,2,3), o.getPosition());
+            o.setPosition(Point3D.valueOf(1,2,3));
+            Assert.assertEquals(Point3D.valueOf(1,2,3), o.getPosition());
         }
 
         @Test(expected = AssertionError.class)
@@ -51,20 +51,20 @@ public class AbstractMovableObjectTest {
 
         @Test
         public void withParent() {
-            AbstractMovableObject p = givenAMovable(Point3D.xyz(1,2,3));
+            AbstractMovableObject p = givenAMovable(Point3D.valueOf(1,2,3));
             AbstractMovableObject o = givenAMovable(Point3D.ZERO);
             o.attachTo(p);
-            o.setPosition(Point3D.xyz(5,6,7));
-            Assert.assertEquals(Point3D.xyz(6,8,10), o.getAbsolutePosition());
+            o.setPosition(Point3D.valueOf(5,6,7));
+            Assert.assertEquals(Point3D.valueOf(6,8,10), o.getAbsolutePosition());
         }
 
         @Test
         public void withChild() {
-            AbstractMovableObject c = givenAMovable(Point3D.xyz(1,2,3));
+            AbstractMovableObject c = givenAMovable(Point3D.valueOf(1,2,3));
             AbstractMovableObject o = givenAMovable(Point3D.ZERO);
             c.attachTo(o);
-            o.setPosition(Point3D.xyz(4,5,6));
-            Assert.assertEquals(Point3D.xyz(5, 7, 9), c.getAbsolutePosition());
+            o.setPosition(Point3D.valueOf(4,5,6));
+            Assert.assertEquals(Point3D.valueOf(5, 7, 9), c.getAbsolutePosition());
         }
 
     }

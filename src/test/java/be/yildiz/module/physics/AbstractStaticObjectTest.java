@@ -39,8 +39,8 @@ public class AbstractStaticObjectTest {
 
         @Test
         public void happyFlow() {
-            Point3D pos = Point3D.xyz(1,2,3);
-            Point3D dir = Point3D.xyz(4,5,6);
+            Point3D pos = Point3D.valueOf(1,2,3);
+            Point3D dir = Point3D.valueOf(4,5,6);
             AbstractStaticObject o = givenAStaticObject(pos, dir);
             Assert.assertEquals(pos, o.getPosition());
             Assert.assertEquals(dir, o.getDirection());
@@ -48,12 +48,12 @@ public class AbstractStaticObjectTest {
 
         @Test(expected = AssertionError.class)
         public void withNullPos() {
-            givenAStaticObject(null, Point3D.xyz(4,5,6));
+            givenAStaticObject(null, Point3D.valueOf(4,5,6));
         }
 
         @Test(expected = AssertionError.class)
         public void withNullDir() {
-            givenAStaticObject(Point3D.xyz(4,5,6), null);
+            givenAStaticObject(Point3D.valueOf(4,5,6), null);
         }
     }
 
