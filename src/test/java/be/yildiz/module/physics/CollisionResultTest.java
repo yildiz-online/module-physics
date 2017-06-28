@@ -38,8 +38,8 @@ import org.junit.runner.RunWith;
 @RunWith(Enclosed.class)
 public class CollisionResultTest {
 
-    private static final EntityId id1 = EntityId.get(4L);
-    private static final EntityId id2 = EntityId.get(3L);
+    private static final EntityId id1 = EntityId.valueOf(4L);
+    private static final EntityId id2 = EntityId.valueOf(3L);
 
     private static final EntityIdentifiable enid1 = () -> id1;
     private static final EntityIdentifiable enid2 = () -> id2;
@@ -198,7 +198,7 @@ public class CollisionResultTest {
         @Test
         public void containsNone() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertFalse(r.containsAndNot(EntityId.WORLD, EntityId.get(1000L)));
+            Assert.assertFalse(r.containsAndNot(EntityId.WORLD, EntityId.valueOf(1000L)));
         }
     }
 
