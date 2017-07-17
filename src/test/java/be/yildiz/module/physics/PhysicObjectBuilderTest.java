@@ -63,7 +63,7 @@ public class PhysicObjectBuilderTest {
 
     private static PhysicObjectBuilder givenABuilder() {
         PhysicObjectBuilder mock = Mockito.mock(PhysicObjectBuilder.class);
-        Mockito.when(mock.withId(4)).thenCallRealMethod();
+        Mockito.when(mock.withId(5)).thenCallRealMethod();
         Mockito.when(mock.withId(EntityId.valueOf(3))).thenCallRealMethod();
         Mockito.when(mock.withId(EntityId.valueOf(5))).thenCallRealMethod();
         Mockito.when(mock.withId(null)).thenCallRealMethod();
