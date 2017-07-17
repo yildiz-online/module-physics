@@ -48,11 +48,11 @@ public abstract class PhysicObjectBuilder {
     protected Point3D direction = Point3D.BASE_DIRECTION;
 
     public PhysicObjectBuilder withId(final long id) {
-        this.id = EntityId.valueOf(id);
-        return this;
+        return this.withId(EntityId.valueOf(id));
     }
 
     public PhysicObjectBuilder withId(final EntityId id) {
+        assert id != null;
         this.id = id;
         return this;
     }
