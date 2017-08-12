@@ -75,7 +75,7 @@ public final class DummyPhysicEngine extends PhysicEngine {
         }
 
         @Override
-        public PhysicObjectBuilder createBuilder() {
+        public PhysicObjectBuilder createObject() {
             return new PhysicObjectBuilder() {
                 @Override
                 public StaticBody buildStatic() {

@@ -48,12 +48,7 @@ public interface PhysicWorld extends World {
      */
     EntityId throwSimpleRay(Point3D origin, Point3D direction, float distance);
 
-    @Deprecated
-    PhysicObjectBuilder createBuilder();
-
-    default PhysicObjectBuilder createObject() {
-        return createBuilder();
-    }
+    PhysicObjectBuilder createObject();
 
     /**
      * Called when then engine stops.
