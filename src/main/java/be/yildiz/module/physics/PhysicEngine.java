@@ -33,7 +33,7 @@ import java.util.List;
  *
  * @author Grégory Van den Borre
  */
-public abstract class AbstractPhysicEngine {
+public abstract class PhysicEngine {
 
     /**
      * List of existing worlds.
@@ -43,7 +43,7 @@ public abstract class AbstractPhysicEngine {
     /**
      * Build a new physic engine.
      */
-    protected AbstractPhysicEngine() {
+    protected PhysicEngine() {
         super();
     }
 
@@ -68,7 +68,7 @@ public abstract class AbstractPhysicEngine {
      *
      * @return The created physic world.
      */
-    public PhysicWorld createPhysicWorld() {
+    public PhysicWorld createWorld() {
         PhysicWorld w = this.createPhysicWorldImpl();
         this.worlds.add(w);
         return w;

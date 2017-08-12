@@ -31,7 +31,7 @@ import be.yildiz.common.vector.Point3D;
  *
  * @author Grégory Van den Borre
  */
-public final class DummyPhysicEngine extends AbstractPhysicEngine {
+public final class DummyPhysicEngine extends PhysicEngine {
 
     /**
      * Build a dummy physic engine.
