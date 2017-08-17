@@ -61,11 +61,6 @@ public abstract class AbstractStaticObject implements Movable {
     }
 
     @Override
-    public final void detach(final Movable other) {
-        //Does nothing.
-    }
-
-    @Override
     public final void addChild(final Movable other) {
         //Does nothing.
     }
@@ -88,11 +83,6 @@ public abstract class AbstractStaticObject implements Movable {
     @Override
     public final Point3D getAbsolutePosition() {
         return this.position;
-    }
-
-    @Override
-    public final void setAbsolutePosition(final Point3D pos) {
-        //Does nothing.
     }
 
     @Override

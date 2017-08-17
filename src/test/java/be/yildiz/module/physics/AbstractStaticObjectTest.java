@@ -23,6 +23,7 @@
 
 package be.yildiz.module.physics;
 
+import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.vector.Point3D;
 import org.junit.Assert;
 import org.junit.Test;
@@ -59,6 +60,21 @@ public class AbstractStaticObjectTest {
 
     public static AbstractStaticObject givenAStaticObject(Point3D pos, Point3D dir) {
         return new AbstractStaticObject(pos, dir) {
+
+            @Override
+            public void detachFromParent() {
+
+            }
+
+            @Override
+            public void addOptionalChild(Movable child) {
+
+            }
+
+            @Override
+            public void removeChild(Movable child) {
+
+            }
 
             @Override
             public void delete() {

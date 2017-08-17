@@ -28,7 +28,6 @@ import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.vector.Point3D;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Grégory Van den Borre
@@ -43,10 +42,7 @@ public abstract class AbstractMovableObject implements Movable {
      * Current object position, relative from its parent.
      */
     private Point3D position = Point3D.ZERO;
-    /**
-     * Current object absolute position.
-     */
-    private Point3D absolutePosition = Point3D.ZERO;
+
     /**
      * Optional parent object.
      */
@@ -60,7 +56,6 @@ public abstract class AbstractMovableObject implements Movable {
     public AbstractMovableObject(final Point3D position) {
         super();
         this.position = position;
-        this.absolutePosition = position;
     }
 
     @Override
@@ -72,13 +67,7 @@ public abstract class AbstractMovableObject implements Movable {
     public final void setPosition(final Point3D newPosition) {
         assert newPosition != null;
         this.position = newPosition;
-        this.absolutePosition = Optional.ofNullable(this.parent)
-                .map(m -> m.getPosition().add(newPosition))
-                .orElse(newPosition);
-        this.setPositionImpl(this.absolutePosition);
-        for (Movable m : this.children) {
-            m.setAbsolutePosition(m.getPosition().add(this.absolutePosition));
-        }
+        this.setPositionImpl(this.getAbsolutePosition());
     }
 
     /**
@@ -90,16 +79,10 @@ public abstract class AbstractMovableObject implements Movable {
 
     @Override
     public final Point3D getAbsolutePosition() {
-        return this.absolutePosition;
-    }
-
-    @Override
-    public final void setAbsolutePosition(final Point3D pos) {
-        this.absolutePosition = pos;
-        this.setPositionImpl(this.absolutePosition);
-        for (Movable m : this.children) {
-            m.setAbsolutePosition(m.getPosition().add(this.absolutePosition));
+        if(this.parent == null) {
+            return this.position;
         }
+        return this.position.add(this.parent.getAbsolutePosition());
     }
 
     @Override
@@ -119,18 +102,13 @@ public abstract class AbstractMovableObject implements Movable {
     @Override
     public final void attachTo(Movable other) {
         other.addChild(this);
-        Optional.ofNullable(this.parent).ifPresent(p -> p.detach(this));
+        this.detachFromParent();
         this.parent = other;
     }
 
     @Override
     public final void attachToOptional(Movable other) {
         this.attachTo(other);
-    }
-
-    @Override
-    public final void detach(Movable other) {
-        this.children.remove(other);
     }
 
     @Override

@@ -72,7 +72,7 @@ public class DummyBodyTest {
 
     @Test
     public void detachTest() {
-        new DummyBody().detach(Mockito.mock(Movable.class));
+        new DummyBody().detachFromParent();
     }
 
     @Test
@@ -88,11 +88,6 @@ public class DummyBodyTest {
     @Test
     public void setPositionTest() {
         new DummyBody().setPosition(Point3D.ZERO);
-    }
-
-    @Test
-    public void setAbsolutePositionTest() {
-        new DummyBody().setAbsolutePosition(Point3D.ZERO);
     }
 
     @Test

@@ -44,17 +44,22 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
     }
 
     @Override
-    public void detach(Movable other) {
-        //Does nothing
-    }
-
-    @Override
     public void addChild(Movable other) {
         //Does nothing
     }
 
     @Override
+    public void removeChild(Movable child) {
+        //Does nothing
+    }
+
+    @Override
     public void attachToOptional(Movable other) {
+        //Does nothing
+    }
+
+    @Override
+    public void detachFromParent() {
         //Does nothing
     }
 
@@ -66,11 +71,6 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
     @Override
     public Point3D getAbsolutePosition() {
         return Point3D.ZERO;
-    }
-
-    @Override
-    public void setAbsolutePosition(Point3D pos) {
-        //Does nothing
     }
 
     @Override
@@ -100,6 +100,11 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
 
     @Override
     public void setDirection(float dirX, float dirY, float dirZ) {
+        //Does nothing
+    }
+
+    @Override
+    public void addOptionalChild(Movable child) {
         //Does nothing
     }
 
