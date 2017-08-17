@@ -38,10 +38,6 @@ public abstract class AbstractMovableObject implements Movable {
      * List of children objects.
      */
     private final List<Movable> children = Lists.newList();
-    /**
-     * Current object position, relative from its parent.
-     */
-    private Point3D position = Point3D.ZERO;
 
     /**
      * Optional parent object.
@@ -50,53 +46,17 @@ public abstract class AbstractMovableObject implements Movable {
 
     /**
      * Constructor.
-     *
-     * @param position Object initial position, absolute position is set at same value.
      */
-    public AbstractMovableObject(final Point3D position) {
+    protected AbstractMovableObject() {
         super();
-        this.position = position;
     }
-
-    @Override
-    public final Point3D getPosition() {
-        return this.position;
-    }
-
-    @Override
-    public final void setPosition(final Point3D newPosition) {
-        assert newPosition != null;
-        this.position = newPosition;
-        this.setPositionImpl(this.getAbsolutePosition());
-    }
-
-    /**
-     * Set the position in implementation.
-     *
-     * @param pos Position to set.
-     */
-    protected abstract void setPositionImpl(Point3D pos);
 
     @Override
     public final Point3D getAbsolutePosition() {
         if(this.parent == null) {
-            return this.position;
+            return this.getPosition();
         }
-        return this.position.add(this.parent.getAbsolutePosition());
-    }
-
-    @Override
-    public final Point3D getDirection() {
-        return Point3D.BASE_DIRECTION;
-    }
-
-    @Override
-    public final void setDirection(Point3D newDirection) {
-    }
-
-    @Override
-    public final Point3D getAbsoluteDirection() {
-        return Point3D.BASE_DIRECTION;
+        return this.getPosition().add(this.parent.getAbsolutePosition());
     }
 
     @Override
@@ -114,6 +74,40 @@ public abstract class AbstractMovableObject implements Movable {
     @Override
     public final void addChild(Movable other) {
         this.children.add(other);
+    }
+
+    @Override
+    public final void setDirection(Point3D newDirection) {
+        this.setDirection(newDirection.x, newDirection.y, newDirection.z);
+    }
+
+    @Override
+    public final void setPosition(Point3D newPosition) {
+        this.setPosition(newPosition.x, newPosition.y, newPosition.z);
+    }
+
+    @Override
+    public final Point3D getAbsoluteDirection() {
+        //FIXME should be normalized
+        if(this.parent == null) {
+            return this.getDirection();
+        }
+        return this.getDirection().add(this.parent.getAbsolutePosition());
+    }
+
+    @Override
+    public final void detachFromParent() {
+
+    }
+
+    @Override
+    public final void addOptionalChild(Movable child) {
+
+    }
+
+    @Override
+    public final void removeChild(Movable child) {
+
     }
 
 }

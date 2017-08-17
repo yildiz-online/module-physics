@@ -81,6 +81,11 @@ public abstract class AbstractStaticObject implements Movable {
     }
 
     @Override
+    public void setPosition(float posX, float posY, float posZ) {
+        //Does nothing.
+    }
+
+    @Override
     public final Point3D getAbsolutePosition() {
         return this.position;
     }
@@ -92,6 +97,11 @@ public abstract class AbstractStaticObject implements Movable {
 
     @Override
     public final void setDirection(final Point3D newDirection) {
+        //Does nothing.
+    }
+
+    @Override
+    public void setDirection(float dirX, float dirY, float dirZ) {
         //Does nothing.
     }
 

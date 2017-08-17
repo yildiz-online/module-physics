@@ -67,6 +67,16 @@ public class AbstractStaticObjectTest {
             }
 
             @Override
+            public void setPosition(float posX, float posY, float posZ) {
+
+            }
+
+            @Override
+            public void setDirection(float dirX, float dirY, float dirZ) {
+
+            }
+
+            @Override
             public void addOptionalChild(Movable child) {
 
             }
