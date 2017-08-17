@@ -23,23 +23,13 @@
 
 package be.yildiz.module.physics;
 
+import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.id.EntityIdentifiable;
-import be.yildiz.common.vector.Point3D;
 
 /**
  * @author Grégory Van den Borre
  */
-public interface BaseBody extends EntityIdentifiable {
-
-    /**
-     * @return The current position.
-     */
-    Point3D getPosition();
-
-    /**
-     * @return The current direction.
-     */
-    Point3D getDirection();
+public interface BaseBody extends EntityIdentifiable, Movable {
 
     /**
      * Scale the body along 3 axes.
@@ -59,10 +49,4 @@ public interface BaseBody extends EntityIdentifiable {
     //@Ensures this.body will no longer interact if sleeping == true or will interact if sleeping == false.
     void sleep(boolean sleeping);
 
-    /**
-     * Delete the body and remove it from its world.
-     */
-    //@Ensures The body is deleted.
-    //@Ensures The associated world no longer contains this body.
-    void delete();
 }
