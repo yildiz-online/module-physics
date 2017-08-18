@@ -23,11 +23,11 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.collections.Lists;
+import be.yildiz.common.collections.Sets;
 import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.vector.Point3D;
 
-import java.util.List;
+import java.util.Set;
 
 /**
  * @author Grégory Van den Borre
@@ -37,7 +37,7 @@ public abstract class AbstractMovableObject implements Movable {
     /**
      * List of children objects.
      */
-    private final List<Movable> children = Lists.newList();
+    private final Set<Movable> children = Sets.newSet();
 
     /**
      * Optional parent object.
@@ -73,7 +73,9 @@ public abstract class AbstractMovableObject implements Movable {
 
     @Override
     public final void addChild(Movable other) {
-        this.children.add(other);
+        if(this.children.add(other)) {
+            other.attachTo(this);
+        }
     }
 
     @Override
