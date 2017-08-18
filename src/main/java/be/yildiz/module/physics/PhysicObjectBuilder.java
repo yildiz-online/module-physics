@@ -25,6 +25,7 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.shape.Box;
+import be.yildiz.common.shape.Plane;
 import be.yildiz.common.shape.Sphere;
 import be.yildiz.common.vector.Point3D;
 
@@ -40,6 +41,8 @@ public abstract class PhysicObjectBuilder {
     protected Box box;
 
     protected Sphere sphere;
+
+    protected Plane plane;
 
     protected PhysicMesh mesh;
 
@@ -64,6 +67,11 @@ public abstract class PhysicObjectBuilder {
 
     public PhysicObjectBuilder withShape(Box box) {
         this.box = box;
+        return this;
+    }
+
+    public PhysicObjectBuilder withShape(Plane plane) {
+        this.plane = plane;
         return this;
     }
 
