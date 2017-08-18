@@ -95,6 +95,11 @@ public class AbstractMovableObjectTest {
             }
 
             @Override
+            public Movable getInternal() {
+                return this;
+            }
+
+            @Override
             public Point3D getDirection() {
                 return Point3D.BASE_DIRECTION;
             }

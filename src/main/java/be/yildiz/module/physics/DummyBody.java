@@ -54,6 +54,11 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
     }
 
     @Override
+    public Movable getInternal() {
+        return this;
+    }
+
+    @Override
     public void attachToOptional(Movable other) {
         //Does nothing
     }

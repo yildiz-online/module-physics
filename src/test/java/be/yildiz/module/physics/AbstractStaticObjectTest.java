@@ -87,6 +87,11 @@ public class AbstractStaticObjectTest {
             }
 
             @Override
+            public Movable getInternal() {
+                return this;
+            }
+
+            @Override
             public void delete() {
 
             }
