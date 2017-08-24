@@ -99,17 +99,17 @@ public abstract class AbstractMovableObject implements Movable {
 
     @Override
     public final void detachFromParent() {
-
+        //TODO do
     }
 
     @Override
     public final void addOptionalChild(Movable child) {
-
+        //TODO do
     }
 
     @Override
     public final void removeChild(Movable child) {
-
+        //TODO do
     }
 
 }
