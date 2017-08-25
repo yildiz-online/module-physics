@@ -24,7 +24,8 @@
 package be.yildiz.module.physics;
 
 import be.yildiz.common.collections.Lists;
-import be.yildiz.common.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -35,6 +36,7 @@ import java.util.List;
  */
 public abstract class PhysicEngine {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(PhysicEngine.class);
     /**
      * List of existing worlds.
      */
@@ -60,7 +62,7 @@ public abstract class PhysicEngine {
     public final void close() {
         this.worlds.forEach(PhysicWorld::delete);
         this.worlds.clear();
-        Logger.info("Physic engine closed.");
+        LOGGER.info("Physic engine closed.");
     }
 
     /**
