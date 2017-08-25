@@ -46,7 +46,6 @@ public class AbstractMovableObjectTest {
             Assert.assertEquals(Point3D.valueOf(1,2,3), o.getPosition());
         }
 
-        @Ignore("implementation uncomplete")
         @Test(expected = AssertionError.class)
         public void withNullValue() {
             givenAMovable(Point3D.ZERO).setPosition(null);
