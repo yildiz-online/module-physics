@@ -26,7 +26,6 @@ package be.yildiz.module.physics;
 import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.vector.Point3D;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
@@ -41,39 +40,29 @@ public class AbstractMovableObjectTest {
 
         @Test
         public void happyFlow() {
-            AbstractMovableObject o = givenAMovable(Point3D.ZERO);
+            AbstractMovableObject o = givenAMovable();
             o.setPosition(Point3D.valueOf(1,2,3));
             Assert.assertEquals(Point3D.valueOf(1,2,3), o.getPosition());
         }
 
         @Test(expected = AssertionError.class)
         public void withNullValue() {
-            givenAMovable(Point3D.ZERO).setPosition(null);
+            givenAMovable().setPosition(null);
         }
 
-        @Ignore("implementation uncomplete")
-        @Test
-        public void withParent() {
-            AbstractMovableObject p = givenAMovable(Point3D.valueOf(1,2,3));
-            AbstractMovableObject o = givenAMovable(Point3D.ZERO);
-            o.attachTo(p);
-            o.setPosition(Point3D.valueOf(5,6,7));
-            Assert.assertEquals(Point3D.valueOf(6,8,10), o.getAbsolutePosition());
-        }
-
-        @Ignore("implementation uncomplete")
         @Test
         public void withChild() {
-            AbstractMovableObject c = givenAMovable(Point3D.valueOf(1,2,3));
-            AbstractMovableObject o = givenAMovable(Point3D.ZERO);
-            c.attachTo(o);
-            o.setPosition(Point3D.valueOf(4,5,6));
-            Assert.assertEquals(Point3D.valueOf(5, 7, 9), c.getAbsolutePosition());
+            AbstractMovableObject child = givenAMovable();
+            child.setPosition(Point3D.valueOf(1,2,3));
+            AbstractMovableObject parent = givenAMovable();
+            child.attachTo(parent);
+            parent.setPosition(Point3D.valueOf(4,5,6));
+            Assert.assertEquals(Point3D.valueOf(5, 7, 9), child.getAbsolutePosition());
         }
 
     }
 
-    public static AbstractMovableObject givenAMovable(Point3D p) {
+    public static AbstractMovableObject givenAMovable() {
         return new AbstractMovableObject() {
 
             private Point3D pos = Point3D.ZERO;
