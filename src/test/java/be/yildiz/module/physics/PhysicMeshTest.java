@@ -23,29 +23,32 @@
 
 package be.yildiz.module.physics;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Grégory Van den Borre
  */
-public class PhysicMeshTest {
+class PhysicMeshTest {
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         PhysicMesh p = new PhysicMesh("abc");
-        Assert.assertEquals("abc", p.file);
-    }
-
-    @Test(expected = AssertionError.class)
-    public void testConstructorNull() {
-        new PhysicMesh(null);
+        assertEquals("abc", p.file);
     }
 
     @Test
-    public void testToString() {
+    void testConstructorNull() {
+        assertThrows(AssertionError.class, () -> new PhysicMesh(null));
+    }
+
+    @Test
+    void testToString() {
         PhysicMesh p = new PhysicMesh("abcdef");
-        Assert.assertEquals("Physic mesh:abcdef", p.toString());
+        assertEquals("Physic mesh:abcdef", p.toString());
     }
 
 }

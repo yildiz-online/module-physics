@@ -25,44 +25,45 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.vector.Point3D;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Grégory Van den Borre
  */
-@RunWith(Enclosed.class)
-public class AbstractMovableObjectTest {
+class AbstractMovableObjectTest {
 
-    public static class SetPosition {
+    @Nested
+    class SetPosition {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             AbstractMovableObject o = givenAMovable();
             o.setPosition(Point3D.valueOf(1,2,3));
-            Assert.assertEquals(Point3D.valueOf(1,2,3), o.getPosition());
-        }
-
-        @Test(expected = AssertionError.class)
-        public void withNullValue() {
-            givenAMovable().setPosition(null);
+            assertEquals(Point3D.valueOf(1,2,3), o.getPosition());
         }
 
         @Test
-        public void withChild() {
+        void withNullValue() {
+            assertThrows(AssertionError.class, () -> givenAMovable().setPosition(null));
+        }
+
+        @Test
+        void withChild() {
             AbstractMovableObject child = givenAMovable();
             child.setPosition(Point3D.valueOf(1,2,3));
             AbstractMovableObject parent = givenAMovable();
             child.attachTo(parent);
             parent.setPosition(Point3D.valueOf(4,5,6));
-            Assert.assertEquals(Point3D.valueOf(5, 7, 9), child.getAbsolutePosition());
+            assertEquals(Point3D.valueOf(5, 7, 9), child.getAbsolutePosition());
         }
 
     }
 
-    public static AbstractMovableObject givenAMovable() {
+    private static AbstractMovableObject givenAMovable() {
         return new AbstractMovableObject() {
 
             private Point3D pos = Point3D.ZERO;

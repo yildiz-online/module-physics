@@ -25,40 +25,41 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.vector.Point3D;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Grégory Van den Borre
  */
-@RunWith(Enclosed.class)
-public class AbstractStaticObjectTest {
+class AbstractStaticObjectTest {
 
-    public static class Constructor {
+    @Nested
+    class Constructor {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             Point3D pos = Point3D.valueOf(1,2,3);
             Point3D dir = Point3D.valueOf(4,5,6);
             AbstractStaticObject o = givenAStaticObject(pos, dir);
-            Assert.assertEquals(pos, o.getPosition());
-            Assert.assertEquals(dir, o.getDirection());
+            assertEquals(pos, o.getPosition());
+            assertEquals(dir, o.getDirection());
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullPos() {
-            givenAStaticObject(null, Point3D.valueOf(4,5,6));
+        @Test
+        void withNullPos() {
+            assertThrows(AssertionError.class, () -> givenAStaticObject(null, Point3D.valueOf(4,5,6)));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullDir() {
-            givenAStaticObject(Point3D.valueOf(4,5,6), null);
+        @Test
+        void withNullDir() {
+            assertThrows(AssertionError.class, () -> givenAStaticObject(Point3D.valueOf(4,5,6), null));
         }
     }
 
-    public static AbstractStaticObject givenAStaticObject(Point3D pos, Point3D dir) {
+    private static AbstractStaticObject givenAStaticObject(Point3D pos, Point3D dir) {
         return new AbstractStaticObject(pos, dir) {
 
             @Override

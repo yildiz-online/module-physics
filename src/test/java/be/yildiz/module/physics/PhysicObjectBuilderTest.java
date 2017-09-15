@@ -25,38 +25,39 @@
 package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Grégory Van den Borre
  */
-@RunWith(Enclosed.class)
-public class PhysicObjectBuilderTest {
+class PhysicObjectBuilderTest {
 
-    public static class WithId {
+    @Nested
+    class WithId {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             PhysicObjectBuilder builder = givenABuilder();
             builder.withId(5);
-            Assert.assertEquals(EntityId.valueOf(5), builder.id);
+            assertEquals(EntityId.valueOf(5), builder.id);
         }
 
         @Test
-        public void happyFlowId() {
+        void happyFlowId() {
             PhysicObjectBuilder builder = givenABuilder();
             builder.withId(EntityId.valueOf(3));
-            Assert.assertEquals(EntityId.valueOf(3), builder.id);
+            assertEquals(EntityId.valueOf(3), builder.id);
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullId() {
+        @Test
+        void withNullId() {
             PhysicObjectBuilder builder = givenABuilder();
-            builder.withId(null);
+            assertThrows(AssertionError.class, () -> builder.withId(null));
         }
 
     }

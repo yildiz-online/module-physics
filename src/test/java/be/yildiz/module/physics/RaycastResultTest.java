@@ -25,30 +25,32 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.vector.Point3D;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author Grégory Van den Borre
  */
-public class RaycastResultTest {
+class RaycastResultTest {
 
     @Test
-    public void testFullConstructor() {
+    void testFullConstructor() {
         RaycastResult r = new RaycastResult(10, 15, 20, 8L);
-        Assert.assertNotNull(r.getContact());
-        Assert.assertNotNull(r.getId());
-        Assert.assertEquals(Point3D.valueOf(10, 15, 20), r.getContact());
-        Assert.assertEquals(EntityId.valueOf(8L), r.getId());
+        assertNotNull(r.getContact());
+        assertNotNull(r.getId());
+        assertEquals(Point3D.valueOf(10, 15, 20), r.getContact());
+        assertEquals(EntityId.valueOf(8L), r.getId());
     }
 
     @Test
-    public void testFullConstructorObject() {
+    void testFullConstructorObject() {
         RaycastResult r = new RaycastResult(Point3D.valueOf(12, 7, 2), EntityId.valueOf(15L));
-        Assert.assertNotNull(r.getContact());
-        Assert.assertNotNull(r.getId());
-        Assert.assertEquals(Point3D.valueOf(12, 7, 2), r.getContact());
-        Assert.assertEquals(EntityId.valueOf(15L), r.getId());
+        assertNotNull(r.getContact());
+        assertNotNull(r.getId());
+        assertEquals(Point3D.valueOf(12, 7, 2), r.getContact());
+        assertEquals(EntityId.valueOf(15L), r.getId());
     }
 
 }

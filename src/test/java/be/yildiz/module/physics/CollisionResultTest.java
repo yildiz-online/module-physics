@@ -25,16 +25,16 @@ package be.yildiz.module.physics;
 
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.EntityIdentifiable;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.experimental.runners.Enclosed;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Grégory Van den Borre
  */
-@RunWith(Enclosed.class)
-public class CollisionResultTest {
+
+class CollisionResultTest {
 
     private static final EntityId id1 = EntityId.valueOf(4L);
     private static final EntityId id2 = EntityId.valueOf(3L);
@@ -46,209 +46,215 @@ public class CollisionResultTest {
         return new CollisionResult(id1, id2);
     }
 
-    public static class Constructor {
+    @Nested
+    class Constructor {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertEquals(id1, r.object1);
-            Assert.assertEquals(id2, r.object2);
+            assertEquals(id1, r.object1);
+            assertEquals(id2, r.object2);
         }
 
-        @Test(expected = AssertionError.class)
-        public void withObject1Null() {
-            new CollisionResult(null, id2);
+        @Test
+        void withObject1Null() {
+            assertThrows(AssertionError.class, () -> new CollisionResult(null, id2));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withObject2Null() {
-            new CollisionResult(id1, null);
+        @Test
+        void withObject2Null() {
+            assertThrows(AssertionError.class, () -> new CollisionResult(id1, null));
         }
     }
 
-    public static class Contains {
+    @Nested
+    class Contains {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertTrue(r.contains(id1));
-            Assert.assertTrue(r.contains(id2));
-            Assert.assertFalse(r.contains(EntityId.WORLD));
-        }
-
-        @Test
-        public void happyFlowTwoParams() {
-            CollisionResult r = givenACollisionResult();
-            Assert.assertTrue(r.contains(id1, id2));
-            Assert.assertFalse(r.contains(EntityId.WORLD, id2));
+            assertTrue(r.contains(id1));
+            assertTrue(r.contains(id2));
+            assertFalse(r.contains(EntityId.WORLD));
         }
 
         @Test
-        public void happyFlowIdentifiable() {
+        void happyFlowTwoParams() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertTrue(r.contains(enid1));
-            Assert.assertTrue(r.contains(enid2));
-            Assert.assertFalse(r.contains(() -> EntityId.WORLD));
+            assertTrue(r.contains(id1, id2));
+            assertFalse(r.contains(EntityId.WORLD, id2));
         }
 
         @Test
-        public void happyFlowIdentifiableTwoParams() {
+        void happyFlowIdentifiable() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertTrue(r.contains(enid1, enid2));
-            Assert.assertFalse(r.contains(() -> EntityId.WORLD, enid2));
+            assertTrue(r.contains(enid1));
+            assertTrue(r.contains(enid2));
+            assertFalse(r.contains(() -> EntityId.WORLD));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNull() {
+        @Test
+        void happyFlowIdentifiableTwoParams() {
             CollisionResult r = givenACollisionResult();
-            r.contains((EntityId)null);
+            assertTrue(r.contains(enid1, enid2));
+            assertFalse(r.contains(() -> EntityId.WORLD, enid2));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullParamOne() {
+        @Test
+        void withNull() {
             CollisionResult r = givenACollisionResult();
-            r.contains(null, id2);
+            assertThrows(AssertionError.class, () -> r.contains((EntityId)null));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullParamTwo() {
+        @Test
+        void withNullParamOne() {
             CollisionResult r = givenACollisionResult();
-            r.contains(id1, null);
+            assertThrows(AssertionError.class, () -> r.contains(null, id2));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullIdentifiable() {
+        @Test
+        void withNullParamTwo() {
             CollisionResult r = givenACollisionResult();
-            r.contains((EntityIdentifiable) null);
+            assertThrows(AssertionError.class, () -> r.contains(id1, null));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullIdentifiableParamOne() {
+        @Test
+        void withNullIdentifiable() {
             CollisionResult r = givenACollisionResult();
-            r.contains(null, enid2);
+            assertThrows(AssertionError.class, () -> r.contains((EntityIdentifiable) null));
         }
 
-        @Test(expected = AssertionError.class)
-        public void withNullIdentifiableParamTwo() {
+        @Test
+        void withNullIdentifiableParamOne() {
             CollisionResult r = givenACollisionResult();
-            r.contains(enid1, null);
+            assertThrows(AssertionError.class, () -> r.contains(null, enid2));
+        }
+
+        @Test
+        void withNullIdentifiableParamTwo() {
+            CollisionResult r = givenACollisionResult();
+            assertThrows(AssertionError.class, () -> r.contains(enid1, null));
         }
 
     }
 
-    public static class ContainsAndNot {
+    @Nested
+    class ContainsAndNot {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertTrue(r.contains(id1, id2));
-            Assert.assertFalse(r.contains(EntityId.WORLD));
-            Assert.assertTrue(r.containsAndNot(id1, EntityId.WORLD));
-            Assert.assertTrue(r.containsAndNot(EntityId.WORLD, id2));
-            Assert.assertTrue(r.containsAndNot(id2, EntityId.WORLD));
-            Assert.assertTrue(r.containsAndNot(EntityId.WORLD, id1));
-        }
-
-        @Test(expected = AssertionError.class)
-        public void withParamOneNull() {
-            CollisionResult r = givenACollisionResult();
-            r.containsAndNot(null, enid2);
-        }
-
-        @Test(expected = AssertionError.class)
-        public void withParamTwoNull() {
-            CollisionResult r = givenACollisionResult();
-            r.containsAndNot(enid1, null);
+            assertTrue(r.contains(id1, id2));
+            assertFalse(r.contains(EntityId.WORLD));
+            assertTrue(r.containsAndNot(id1, EntityId.WORLD));
+            assertTrue(r.containsAndNot(EntityId.WORLD, id2));
+            assertTrue(r.containsAndNot(id2, EntityId.WORLD));
+            assertTrue(r.containsAndNot(EntityId.WORLD, id1));
         }
 
         @Test
-        public void happyFlowIdentifiable() {
+        void withParamOneNull() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertTrue(r.contains(enid1, enid2));
-            Assert.assertFalse(r.contains(() -> EntityId.WORLD));
-            Assert.assertTrue(r.containsAndNot(enid1, () -> EntityId.WORLD));
-            Assert.assertTrue(r.containsAndNot(() -> EntityId.WORLD, enid2));
-            Assert.assertTrue(r.containsAndNot(enid2, () -> EntityId.WORLD));
-            Assert.assertTrue(r.containsAndNot(() -> EntityId.WORLD, enid1));
+            assertThrows(AssertionError.class, () -> r.containsAndNot(null, enid2));
         }
 
         @Test
-        public void containsBoth() {
+        void withParamTwoNull() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertFalse(r.containsAndNot(id1, id2));
+            assertThrows(AssertionError.class, () -> r.containsAndNot(enid1, null));
         }
 
         @Test
-        public void containsNone() {
+        void happyFlowIdentifiable() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertFalse(r.containsAndNot(EntityId.WORLD, EntityId.valueOf(1000L)));
+            assertTrue(r.contains(enid1, enid2));
+            assertFalse(r.contains(() -> EntityId.WORLD));
+            assertTrue(r.containsAndNot(enid1, () -> EntityId.WORLD));
+            assertTrue(r.containsAndNot(() -> EntityId.WORLD, enid2));
+            assertTrue(r.containsAndNot(enid2, () -> EntityId.WORLD));
+            assertTrue(r.containsAndNot(() -> EntityId.WORLD, enid1));
+        }
+
+        @Test
+        void containsBoth() {
+            CollisionResult r = givenACollisionResult();
+            assertFalse(r.containsAndNot(id1, id2));
+        }
+
+        @Test
+        void containsNone() {
+            CollisionResult r = givenACollisionResult();
+            assertFalse(r.containsAndNot(EntityId.WORLD, EntityId.valueOf(1000L)));
         }
     }
 
-    public static class HashCode {
+    @Nested
+    class HashCode {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertEquals(id1.hashCode() + id2.hashCode(), r.hashCode());
+            assertEquals(id1.hashCode() + id2.hashCode(), r.hashCode());
         }
     }
 
-    public static class Equals {
+    @Nested
+    class Equals {
 
         @Test
-        public void sameInstance() {
+        void sameInstance() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertTrue(r.equals(r));
+            assertTrue(r.equals(r));
         }
 
         @Test
-        public void sameObject() {
+        void sameObject() {
             CollisionResult r = givenACollisionResult();
             CollisionResult r2 = givenACollisionResult();
-            Assert.assertTrue(r.equals(r2));
+            assertTrue(r.equals(r2));
         }
 
         @Test
-        public void differentOrder() {
+        void differentOrder() {
             CollisionResult r = givenACollisionResult();
             CollisionResult r2 = new CollisionResult(id2, id1);
-            Assert.assertTrue(r.equals(r2));
+            assertTrue(r.equals(r2));
         }
 
         @Test
-        public void withNull() {
+        void withNull() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertFalse(r.equals(null));
+            assertFalse(r.equals(null));
         }
 
         @Test
-        public void differentObject() {
+        void differentObject() {
             CollisionResult r = givenACollisionResult();
             CollisionResult r2 = new CollisionResult(id1, EntityId.WORLD);
-            Assert.assertFalse(r.equals(r2));
+            assertFalse(r.equals(r2));
         }
 
         @Test
-        public void differentObjectParamTwo() {
+        void differentObjectParamTwo() {
             CollisionResult r = givenACollisionResult();
             CollisionResult r2 = new CollisionResult(EntityId.WORLD, id2);
-            Assert.assertFalse(r.equals(r2));
+            assertFalse(r.equals(r2));
         }
 
         @Test
-        public void differentType() {
+        void differentType() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertFalse(r.equals("ok"));
+            assertFalse(r.equals("ok"));
         }
     }
 
-    public static class ToString {
+    @Nested
+    class ToString {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             CollisionResult r = givenACollisionResult();
-            Assert.assertEquals("Collision: " + id1 + " : " + id2, r.toString());
+            assertEquals("Collision: " + id1 + " : " + id2, r.toString());
         }
     }
 }
