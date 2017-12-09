@@ -23,7 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.collections.Sets;
+import be.yildizgames.common.collection.Sets;
 import be.yildiz.common.gameobject.Movable;
 import be.yildiz.common.vector.Point3D;
 

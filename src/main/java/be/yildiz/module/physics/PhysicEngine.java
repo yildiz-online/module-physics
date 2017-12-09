@@ -23,7 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.collections.Lists;
+import be.yildizgames.common.collection.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
