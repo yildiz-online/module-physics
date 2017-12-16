@@ -26,8 +26,6 @@ package be.yildiz.module.physics;
 import be.yildiz.common.Assert;
 import be.yildiz.common.id.EntityId;
 import be.yildiz.common.id.EntityIdentifiable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Contains the result of a collision between 2 objects.
@@ -35,8 +33,6 @@ import org.slf4j.LoggerFactory;
  * @author Grégory Van den Borre
  */
 public final class CollisionResult {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CollisionResult.class);
 
     /**
      * Collided object Id.
@@ -48,7 +44,7 @@ public final class CollisionResult {
      */
     public final EntityId object2;
 
-    public CollisionResult(final EntityId e1, final EntityId e2) {
+    CollisionResult(final EntityId e1, final EntityId e2) {
         super();
         this.object1 = e1;
         this.object2 = e2;
@@ -126,14 +122,6 @@ public final class CollisionResult {
     }
 
     private boolean invariant() {
-        if(this.object1 == null) {
-            LOGGER.error("Object1 cannot be null.");
-            return false;
-        }
-        if(this.object2 == null) {
-            LOGGER.error("Object2 cannot be null.");
-            return false;
-        }
-        return true;
+        return this.object1 != null && this.object2 != null;
     }
 }
