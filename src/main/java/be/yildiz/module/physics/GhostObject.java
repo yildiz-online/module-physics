@@ -23,8 +23,8 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.gameobject.Movable;
-import be.yildiz.common.id.EntityId;
+
+import be.yildizgames.common.model.EntityId;
 
 /**
  * A ghost object receive collisions from movable and dynamic objects. It does not affect dynamic object and other objects does not receive collision from it.

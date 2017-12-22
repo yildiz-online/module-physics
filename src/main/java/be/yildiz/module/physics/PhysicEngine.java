@@ -23,8 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildizgames.common.collection.Lists;
-
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +36,7 @@ public abstract class PhysicEngine {
     /**
      * List of existing worlds.
      */
-    private final List<PhysicWorld> worlds = Lists.newList();
+    private final List<PhysicWorld> worlds = new ArrayList<>();
 
     /**
      * Build a new physic engine.

@@ -23,8 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.gameobject.Movable;
-import be.yildiz.common.id.EntityIdentifiable;
+import be.yildizgames.common.model.EntityIdentifiable;
 
 /**
  * @author Grégory Van den Borre

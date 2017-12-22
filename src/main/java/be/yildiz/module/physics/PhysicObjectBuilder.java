@@ -23,11 +23,11 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.id.EntityId;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.shape.Box;
 import be.yildizgames.common.shape.Plane;
 import be.yildizgames.common.shape.Sphere;
-import be.yildiz.common.vector.Point3D;
 
 /**
  * @author Grégory Van den Borre

@@ -23,8 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.gameobject.Movable;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
 
 /**
  * @author Grégory Van den Borre

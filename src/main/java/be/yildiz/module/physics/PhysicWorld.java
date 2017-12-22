@@ -23,8 +23,8 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
 
 /**
  * A physic world is a world where physic entities live, they can be static, kinematic or dynamic.

@@ -23,9 +23,8 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.Assert;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.id.EntityIdentifiable;
+import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.model.EntityIdentifiable;
 
 /**
  * Contains the result of a collision between 2 objects.
