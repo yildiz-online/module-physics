@@ -23,9 +23,9 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.gameobject.Movable;
-import be.yildiz.common.id.EntityId;
-import be.yildiz.common.vector.Point3D;
+import be.yildizgames.common.geometry.Movable;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -79,11 +79,6 @@ class DummyBodyTest {
     @Test
     void attachToOptionalTest() {
         new DummyBody().attachToOptional(Mockito.mock(Movable.class));
-    }
-
-    @Test
-    void deleteTest() {
-        new DummyBody().delete();
     }
 
     @Test

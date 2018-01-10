@@ -23,9 +23,12 @@
 
 package be.yildiz.module.physics;
 
+import be.yildizgames.common.geometry.Movable;
 import be.yildizgames.common.geometry.Point3D;
 
 import java.util.Set;
+import java.util.TreeSet;
+
 
 /**
  * @author Grégory Van den Borre
@@ -35,7 +38,7 @@ public abstract class AbstractMovableObject implements Movable {
     /**
      * List of children objects.
      */
-    private final Set<Movable> children = Sets.newSet();
+    private final Set<Movable> children = new TreeSet<>();
 
     /**
      * Optional parent object.

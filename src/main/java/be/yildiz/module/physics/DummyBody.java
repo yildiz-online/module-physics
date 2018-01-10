@@ -24,7 +24,9 @@
 package be.yildiz.module.physics;
 
 
+import be.yildizgames.common.geometry.Movable;
 import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.geometry.Quaternion;
 import be.yildizgames.common.model.EntityId;
 
 /**
@@ -94,11 +96,6 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
 
     @Override
     public void sleep(boolean sleeping) {
-        //Does nothing
-    }
-
-    @Override
-    public void delete() {
         //Does nothing
     }
 

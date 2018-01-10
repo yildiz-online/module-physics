@@ -24,7 +24,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildiz.common.id.EntityId;
+import be.yildizgames.common.model.EntityId;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

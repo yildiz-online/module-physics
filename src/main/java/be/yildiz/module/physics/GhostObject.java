@@ -24,6 +24,7 @@
 package be.yildiz.module.physics;
 
 
+import be.yildizgames.common.geometry.Movable;
 import be.yildizgames.common.model.EntityId;
 
 /**
