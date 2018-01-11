@@ -43,7 +43,7 @@ public final class CollisionResult {
      */
     public final EntityId object2;
 
-    CollisionResult(final EntityId e1, final EntityId e2) {
+    public CollisionResult(final EntityId e1, final EntityId e2) {
         super();
         this.object1 = e1;
         this.object2 = e2;
