@@ -23,7 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildizgames.common.geometry.Movable;
+import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
@@ -67,6 +67,11 @@ class AbstractMovableObjectTest {
 
     private static AbstractMovableObject givenAMovable() {
         return new AbstractMovableObject() {
+
+            @Override
+            public void delete() {
+
+            }
 
             private Point3D pos = Point3D.ZERO;
 

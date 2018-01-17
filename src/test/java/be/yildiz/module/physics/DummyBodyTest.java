@@ -23,7 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildizgames.common.geometry.Movable;
+import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
 import org.junit.jupiter.api.Test;

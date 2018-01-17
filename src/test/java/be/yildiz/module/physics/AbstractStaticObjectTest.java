@@ -23,7 +23,7 @@
 
 package be.yildiz.module.physics;
 
-import be.yildizgames.common.geometry.Movable;
+import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -61,6 +61,11 @@ class AbstractStaticObjectTest {
 
     private static AbstractStaticObject givenAStaticObject(Point3D pos, Point3D dir) {
         return new AbstractStaticObject(pos, dir) {
+
+            @Override
+            public void delete() {
+                //Does nothing
+            }
 
             @Override
             public void detachFromParent() {

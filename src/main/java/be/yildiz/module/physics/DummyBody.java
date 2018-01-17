@@ -24,7 +24,7 @@
 package be.yildiz.module.physics;
 
 
-import be.yildizgames.common.geometry.Movable;
+import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.geometry.Quaternion;
 import be.yildizgames.common.model.EntityId;
@@ -131,6 +131,11 @@ public class DummyBody implements StaticBody, KinematicBody, DynamicBody, GhostO
 
     @Override
     public void setOrientation(Quaternion q) {
+        //Does nothing
+    }
+
+    @Override
+    public void delete() {
         //Does nothing
     }
 }
