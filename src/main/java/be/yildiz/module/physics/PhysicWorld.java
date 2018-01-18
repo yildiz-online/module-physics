@@ -23,6 +23,7 @@
 
 package be.yildiz.module.physics;
 
+import be.yildizgames.common.gameobject.CollisionListener;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
 
