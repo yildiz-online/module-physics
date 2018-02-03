@@ -26,6 +26,7 @@ package be.yildiz.module.physics;
 import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -52,6 +53,12 @@ public abstract class AbstractMovableObject implements Movable {
         super();
     }
 
+    /**
+     * An object can be attached to another one, in this case the attached
+     * object position and direction will be relative to its parent.
+     * The absolute position is not relative to the parent but to the world.
+     * @return The absolute position.
+     */
     @Override
     public final Point3D getAbsolutePosition() {
         if(this.parent == null) {
@@ -90,18 +97,24 @@ public abstract class AbstractMovableObject implements Movable {
         this.setPosition(newPosition.x, newPosition.y, newPosition.z);
     }
 
+    /**
+     * An object can be attached to another one, in this case the attached
+     * object position and direction will be relative to its parent.
+     * The absolute direction is not relative to the parent but to the world.
+     * @return The normalized absolute direction.
+     */
     @Override
     public final Point3D getAbsoluteDirection() {
-        //FIXME should be normalized
         if(this.parent == null) {
-            return this.getDirection();
+            return Point3D.normalize(this.getDirection());
         }
-        return this.getDirection().add(this.parent.getAbsolutePosition());
+        return Point3D.normalize(this.getDirection().add(this.parent.getAbsolutePosition()));
     }
 
     @Override
     public final void detachFromParent() {
-        //TODO do
+        Optional.ofNullable(this.parent).ifPresent(p -> p.removeChild(this));
+        this.parent = null;
     }
 
     @Override
