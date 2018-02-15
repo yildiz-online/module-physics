@@ -22,7 +22,7 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +38,8 @@ public abstract class PhysicEngine {
      * List of existing worlds.
      */
     private final List<PhysicWorld> worlds = new ArrayList<>();
+
+    private boolean stop;
 
     /**
      * Build a new physic engine.
@@ -57,8 +59,22 @@ public abstract class PhysicEngine {
      * Close the engine and free its resources.
      */
     public final void close() {
+        this.stop = true;
         this.worlds.forEach(PhysicWorld::delete);
         this.worlds.clear();
+    }
+
+    /**
+     * Create a new thread and run the engine.
+     */
+    public final void start() {
+        new Thread(this::runEngine).start();
+    }
+
+    private void runEngine() {
+        while(!this.stop) {
+            this.update();
+        }
     }
 
     /**

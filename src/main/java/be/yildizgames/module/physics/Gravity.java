@@ -22,13 +22,61 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
 /**
- * A static body will nor move neither be affected by physic forces.
+ * Constant gravity values for common planets and satellites.
  *
  * @author Grégory Van den Borre
  */
-public interface StaticBody extends BaseBody {
+public enum Gravity {
 
+    /**
+     * Gravity in empty environment, 0.
+     */
+    SPACE(-0.0f),
+
+    /**
+     * Gravity on Earth planet.
+     */
+    EARTH(9.81f),
+
+    /**
+     * Gravity on Mars planet.
+     */
+    MARS(3.69f),
+
+    /**
+     * Gravity on Earth moon.
+     */
+    MOON(1.63f),
+
+    /**
+     * Gravity on Venus planet.
+     */
+    VENUS(8.87f),
+
+    /**
+     * Gravity on Mercure planet.
+     */
+    MERCURE(3.701f),
+
+    /**
+     * Gravity on floating environment -0.1.
+     */
+    FLOATING(-0.1f);
+
+    /**
+     * Gravity speed, on the Y axis.
+     */
+    public final float value;
+
+    /**
+     * Full constructor.
+     *
+     * @param gravityValue Gravity value(in m/sec²).
+     */
+    Gravity(final float gravityValue) {
+        this.value = gravityValue;
+    }
 }

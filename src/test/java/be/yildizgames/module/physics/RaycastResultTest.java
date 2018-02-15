@@ -22,61 +22,36 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
+
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
- * Constant gravity values for common planets and satellites.
- *
  * @author Grégory Van den Borre
  */
-public enum Gravity {
+class RaycastResultTest {
 
-    /**
-     * Gravity in empty environment, 0.
-     */
-    SPACE(-0.0f),
-
-    /**
-     * Gravity on Earth planet.
-     */
-    EARTH(9.81f),
-
-    /**
-     * Gravity on Mars planet.
-     */
-    MARS(3.69f),
-
-    /**
-     * Gravity on Earth moon.
-     */
-    MOON(1.63f),
-
-    /**
-     * Gravity on Venus planet.
-     */
-    VENUS(8.87f),
-
-    /**
-     * Gravity on Mercure planet.
-     */
-    MERCURE(3.701f),
-
-    /**
-     * Gravity on floating environment -0.1.
-     */
-    FLOATING(-0.1f);
-
-    /**
-     * Gravity speed, on the Y axis.
-     */
-    public final float value;
-
-    /**
-     * Full constructor.
-     *
-     * @param gravityValue Gravity value(in m/sec²).
-     */
-    Gravity(final float gravityValue) {
-        this.value = gravityValue;
+    @Test
+    void testFullConstructor() {
+        RaycastResult r = new RaycastResult(10, 15, 20, 8L);
+        assertNotNull(r.getContact());
+        assertNotNull(r.getId());
+        assertEquals(Point3D.valueOf(10, 15, 20), r.getContact());
+        assertEquals(EntityId.valueOf(8L), r.getId());
     }
+
+    @Test
+    void testFullConstructorObject() {
+        RaycastResult r = new RaycastResult(Point3D.valueOf(12, 7, 2), EntityId.valueOf(15L));
+        assertNotNull(r.getContact());
+        assertNotNull(r.getId());
+        assertEquals(Point3D.valueOf(12, 7, 2), r.getContact());
+        assertEquals(EntityId.valueOf(15L), r.getId());
+    }
+
 }

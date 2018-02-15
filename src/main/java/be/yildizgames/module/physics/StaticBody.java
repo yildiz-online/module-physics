@@ -22,13 +22,13 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
 /**
- * A dynamic body is moved by physics forces.
+ * A static body will nor move neither be affected by physic forces.
  *
  * @author Grégory Van den Borre
  */
-public interface DynamicBody extends MovableBody {
+public interface StaticBody extends BaseBody {
 
 }

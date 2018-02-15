@@ -22,73 +22,53 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
-import be.yildizgames.common.gameobject.Movable;
-import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Grégory Van den Borre
  */
-class DummyBodyTest {
+class PhysicObjectBuilderTest {
 
-    @Test
-    void testGetId() {
-        assertEquals(EntityId.WORLD, new DummyBody().getId());
+    @Nested
+    class WithId {
+
+        @Test
+        void happyFlow() {
+            PhysicObjectBuilder builder = givenABuilder();
+            builder.withId(5);
+            assertEquals(EntityId.valueOf(5), builder.id);
+        }
+
+        @Test
+        void happyFlowId() {
+            PhysicObjectBuilder builder = givenABuilder();
+            builder.withId(EntityId.valueOf(3));
+            assertEquals(EntityId.valueOf(3), builder.id);
+        }
+
+        @Test
+        void withNullId() {
+            PhysicObjectBuilder builder = givenABuilder();
+            assertThrows(AssertionError.class, () -> builder.withId(null));
+        }
+
     }
 
-    @Test
-    void getPositionTest() {
-        assertEquals(Point3D.ZERO, new DummyBody().getPosition());
+    private static PhysicObjectBuilder givenABuilder() {
+        PhysicObjectBuilder mock = Mockito.mock(PhysicObjectBuilder.class);
+        Mockito.when(mock.withId(5)).thenCallRealMethod();
+        Mockito.when(mock.withId(EntityId.valueOf(3))).thenCallRealMethod();
+        Mockito.when(mock.withId(EntityId.valueOf(5))).thenCallRealMethod();
+        Mockito.when(mock.withId(null)).thenCallRealMethod();
+        return mock;
     }
 
-    @Test
-    void getAbsolutePositionTest() {
-        assertEquals(Point3D.ZERO, new DummyBody().getAbsolutePosition());
-    }
-
-    @Test
-    void getDirectionTest() {
-        assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getDirection());
-    }
-
-    @Test
-    void getAbsoluteDirectionTest() {
-        assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getAbsoluteDirection());
-    }
-
-    @Test
-    void attachToTest() {
-        new DummyBody().attachTo(Mockito.mock(Movable.class));
-    }
-
-    @Test
-    void addChildTest() {
-        new DummyBody().attachTo(Mockito.mock(Movable.class));
-    }
-
-    @Test
-    void detachTest() {
-        new DummyBody().detachFromParent();
-    }
-
-    @Test
-    void attachToOptionalTest() {
-        new DummyBody().attachToOptional(Mockito.mock(Movable.class));
-    }
-
-    @Test
-    void setPositionTest() {
-        new DummyBody().setPosition(Point3D.ZERO);
-    }
-
-    @Test
-    void setDirectionTest() {
-        new DummyBody().setDirection(Point3D.ZERO);
-    }
 }

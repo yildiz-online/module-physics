@@ -22,34 +22,73 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
-
+import be.yildizgames.common.gameobject.Movable;
+import be.yildizgames.common.geometry.Point3D;
+import be.yildizgames.common.model.EntityId;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Grégory Van den Borre
  */
-class PhysicMeshTest {
+class DummyBodyTest {
 
     @Test
-    void testConstructor() {
-        PhysicMesh p = new PhysicMesh("abc");
-        assertEquals("abc", p.file);
+    void testGetId() {
+        assertEquals(EntityId.WORLD, new DummyBody().getId());
     }
 
     @Test
-    void testConstructorNull() {
-        assertThrows(AssertionError.class, () -> new PhysicMesh(null));
+    void getPositionTest() {
+        assertEquals(Point3D.ZERO, new DummyBody().getPosition());
     }
 
     @Test
-    void testToString() {
-        PhysicMesh p = new PhysicMesh("abcdef");
-        assertEquals("Physic mesh:abcdef", p.toString());
+    void getAbsolutePositionTest() {
+        assertEquals(Point3D.ZERO, new DummyBody().getAbsolutePosition());
     }
 
+    @Test
+    void getDirectionTest() {
+        assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getDirection());
+    }
+
+    @Test
+    void getAbsoluteDirectionTest() {
+        assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getAbsoluteDirection());
+    }
+
+    @Test
+    void attachToTest() {
+        new DummyBody().attachTo(Mockito.mock(Movable.class));
+    }
+
+    @Test
+    void addChildTest() {
+        new DummyBody().attachTo(Mockito.mock(Movable.class));
+    }
+
+    @Test
+    void detachTest() {
+        new DummyBody().detachFromParent();
+    }
+
+    @Test
+    void attachToOptionalTest() {
+        new DummyBody().attachToOptional(Mockito.mock(Movable.class));
+    }
+
+    @Test
+    void setPositionTest() {
+        new DummyBody().setPosition(Point3D.ZERO);
+    }
+
+    @Test
+    void setDirectionTest() {
+        new DummyBody().setDirection(Point3D.ZERO);
+    }
 }

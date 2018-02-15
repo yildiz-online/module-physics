@@ -22,21 +22,13 @@
  *
  */
 
-package be.yildiz.module.physics;
-
-
-import be.yildizgames.common.gameobject.Movable;
-import be.yildizgames.common.model.EntityId;
+package be.yildizgames.module.physics;
 
 /**
- * A ghost object receive collisions from movable and dynamic objects. It does not affect dynamic object and other objects does not receive collision from it.
+ * A dynamic body is moved by physics forces.
  *
  * @author Grégory Van den Borre
  */
-public interface GhostObject extends Movable {
+public interface DynamicBody extends MovableBody {
 
-    /**
-     * @return The unique id of this object.
-     */
-    EntityId getId();
 }

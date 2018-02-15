@@ -22,12 +22,10 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
-import be.yildizgames.common.model.EntityId;
-import org.junit.jupiter.api.Nested;
+
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -35,40 +33,23 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class PhysicObjectBuilderTest {
+class PhysicMeshTest {
 
-    @Nested
-    class WithId {
-
-        @Test
-        void happyFlow() {
-            PhysicObjectBuilder builder = givenABuilder();
-            builder.withId(5);
-            assertEquals(EntityId.valueOf(5), builder.id);
-        }
-
-        @Test
-        void happyFlowId() {
-            PhysicObjectBuilder builder = givenABuilder();
-            builder.withId(EntityId.valueOf(3));
-            assertEquals(EntityId.valueOf(3), builder.id);
-        }
-
-        @Test
-        void withNullId() {
-            PhysicObjectBuilder builder = givenABuilder();
-            assertThrows(AssertionError.class, () -> builder.withId(null));
-        }
-
+    @Test
+    void testConstructor() {
+        PhysicMesh p = new PhysicMesh("abc");
+        assertEquals("abc", p.file);
     }
 
-    private static PhysicObjectBuilder givenABuilder() {
-        PhysicObjectBuilder mock = Mockito.mock(PhysicObjectBuilder.class);
-        Mockito.when(mock.withId(5)).thenCallRealMethod();
-        Mockito.when(mock.withId(EntityId.valueOf(3))).thenCallRealMethod();
-        Mockito.when(mock.withId(EntityId.valueOf(5))).thenCallRealMethod();
-        Mockito.when(mock.withId(null)).thenCallRealMethod();
-        return mock;
+    @Test
+    void testConstructorNull() {
+        assertThrows(AssertionError.class, () -> new PhysicMesh(null));
+    }
+
+    @Test
+    void testToString() {
+        PhysicMesh p = new PhysicMesh("abcdef");
+        assertEquals("Physic mesh:abcdef", p.toString());
     }
 
 }

@@ -14,7 +14,7 @@ The physics module is an abstract component to handle the physics, it is meant t
 
 ## Requirements
 
-To build this module, you will need a java 8 JDK and Maven 3.
+To build this module, you will need a java 9 JDK and Maven 3.
 
 ## Coding Style and other information
 

@@ -22,13 +22,13 @@
  *
  */
 
-package be.yildiz.module.physics;
+module be.yildizgames.module.physics {
 
-/**
- * Physics object manually moved.
- *
- * @author Grégory Van den Borre
- */
-public interface KinematicBody extends MovableBody {
+    requires be.yildizgames.common.geometry;
+    requires be.yildizgames.common.model;
+    requires be.yildizgames.common.gameobject;
+    requires be.yildizgames.common.shape;
 
+
+    exports be.yildizgames.module.physics;
 }

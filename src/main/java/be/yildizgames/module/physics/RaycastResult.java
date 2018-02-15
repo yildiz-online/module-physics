@@ -22,7 +22,7 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;

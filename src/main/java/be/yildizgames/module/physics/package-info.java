@@ -22,39 +22,7 @@
  *
  */
 
-package be.yildiz.module.physics;
-
 /**
- * Contains the data for a physic mesh file.
- *
  * @author Grégory Van den Borre
  */
-public final class PhysicMesh {
-
-    /**
-     * Mesh file path.
-     */
-    public final String file;
-
-    /**
-     * Build a PhysicMesh object from a file path.
-     *
-     * @param path Path and name of the mesh to use.
-     * @throws AssertionError If path is null.
-     */
-    //@Ensures this.file == path
-    public PhysicMesh(final String path) {
-        super();
-        assert path != null : "Path shouldnt be null";
-        this.file = path;
-    }
-
-    /**
-     * @return The file name and the material.
-     */
-    @Override
-    public String toString() {
-        return "Physic mesh:" + this.file;
-    }
-
-}
+package be.yildizgames.module.physics;

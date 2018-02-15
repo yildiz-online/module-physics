@@ -22,36 +22,21 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
-import be.yildizgames.common.geometry.Point3D;
+
+import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.model.EntityId;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
+ * A ghost object receive collisions from movable and dynamic objects. It does not affect dynamic object and other objects does not receive collision from it.
+ *
  * @author Grégory Van den Borre
  */
-class RaycastResultTest {
+public interface GhostObject extends Movable {
 
-    @Test
-    void testFullConstructor() {
-        RaycastResult r = new RaycastResult(10, 15, 20, 8L);
-        assertNotNull(r.getContact());
-        assertNotNull(r.getId());
-        assertEquals(Point3D.valueOf(10, 15, 20), r.getContact());
-        assertEquals(EntityId.valueOf(8L), r.getId());
-    }
-
-    @Test
-    void testFullConstructorObject() {
-        RaycastResult r = new RaycastResult(Point3D.valueOf(12, 7, 2), EntityId.valueOf(15L));
-        assertNotNull(r.getContact());
-        assertNotNull(r.getId());
-        assertEquals(Point3D.valueOf(12, 7, 2), r.getContact());
-        assertEquals(EntityId.valueOf(15L), r.getId());
-    }
-
+    /**
+     * @return The unique id of this object.
+     */
+    EntityId getId();
 }

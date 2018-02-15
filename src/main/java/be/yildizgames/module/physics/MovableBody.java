@@ -22,52 +22,66 @@
  *
  */
 
-package be.yildiz.module.physics;
+package be.yildizgames.module.physics;
 
-import be.yildizgames.common.gameobject.CollisionListener;
 import be.yildizgames.common.geometry.Point3D;
-import be.yildizgames.common.model.EntityId;
+import be.yildizgames.common.geometry.Quaternion;
 
 /**
- * A physic world is a world where physic entities live, they can be static, kinematic or dynamic.
- *
  * @author Grégory Van den Borre
  */
-public interface PhysicWorld extends World {
+public interface MovableBody extends BaseBody {
 
     /**
-     * Update this world state, this is called by the physic engine, it should not be called explicitly excepted for tests.
-     */
-    void update();
-
-    /**
-     * Throw a ray to a distant direction.
+     * Set the body direction.
      *
-     * @param origin    Ray origin coordinates.
-     * @param direction Ray direction vector.
-     * @param distance  Maximum length of the ray.
-     * @return The collided object.
+     * @param dirX Direction X value.
+     * @param dirY Direction Y value.
+     * @param dirZ Direction Z value.
      */
-    EntityId throwSimpleRay(Point3D origin, Point3D direction, float distance);
-
-    PhysicObjectBuilder createObject();
+    void setDirection(float dirX, float dirY, float dirZ);
 
     /**
-     * Called when then engine stops.
+     * Set the body direction.
+     * @param direction Direction value.
      */
-    void delete();
+    default void setDirection(final Point3D direction) {
+        this.setDirection(direction.x, direction.y, direction.z);
+    }
 
     /**
-     * Add a collision listener to be notified when collision occurs.
+     * Set the body position.
      *
-     * @param listener Listener to add.
+     * @param posX Position X value.
+     * @param posY Position Y value.
+     * @param posZ Position Z value.
      */
-    void addCollisionListener(CollisionListener listener);
+    void setPosition(float posX, float posY, float posZ);
 
     /**
-     * Add a collision listener to be notified when collision occurs with ghost objects.
-     *
-     * @param listener Listener to add.
+     * Set the body position.
+     * @param position Position value.
      */
-    void addGhostCollisionListener(CollisionListener listener);
+    default void setPosition(final Point3D position) {
+        this.setPosition(position.x, position.y, position.z);
+    }
+
+    /**
+     * Rotate the body.
+     *
+     * @param x Rotation X value.
+     * @param y Rotation Y value.
+     * @param z Rotation Z value.
+     * @param w Rotation W value.
+     */
+    void setOrientation(float x, float y, float z, float w);
+
+    /**
+     * Set the body orientation.
+     *
+     * @param q New orientation.
+     */
+    default void setOrientation(Quaternion q) {
+        this.setOrientation(q.w, q.x, q.y, q.z);
+    }
 }
