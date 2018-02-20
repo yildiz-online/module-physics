@@ -24,8 +24,11 @@
 
 package be.yildizgames.module.physics;
 
+import be.yildizgames.module.physics.dummy.DummyPhysicEngineProvider;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ServiceLoader;
 
 /**
  * Abstract physic engine, create worlds, shape objects, physic bodies, manage collisions.
@@ -48,6 +51,11 @@ public abstract class PhysicEngine {
         super();
     }
 
+    public static PhysicEngine getEngine() {
+        ServiceLoader<PhysicEngineProvider> provider = ServiceLoader.load(PhysicEngineProvider.class);
+        return provider.findFirst().orElseGet(DummyPhysicEngineProvider::new).getPhysicEngine();
+    }
+
     /**
      * Update the physic world to its latest state.
      */
@@ -67,14 +75,9 @@ public abstract class PhysicEngine {
     /**
      * Create a new thread and run the engine.
      */
-    public final void start() {
+    public final PhysicEngine start() {
         new Thread(this::runEngine).start();
-    }
-
-    private void runEngine() {
-        while(!this.stop) {
-            this.update();
-        }
+        return this;
     }
 
     /**
@@ -82,7 +85,7 @@ public abstract class PhysicEngine {
      *
      * @return The created physic world.
      */
-    public PhysicWorld createWorld() {
+    public final PhysicWorld createWorld() {
         PhysicWorld w = this.createPhysicWorldImpl();
         this.worlds.add(w);
         return w;
@@ -94,4 +97,11 @@ public abstract class PhysicEngine {
      * @return The created world.
      */
     protected abstract PhysicWorld createPhysicWorldImpl();
+
+    private void runEngine() {
+        while(!this.stop) {
+            this.update();
+        }
+    }
+
 }

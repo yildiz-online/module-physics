@@ -22,13 +22,17 @@
  *
  */
 
-package be.yildizgames.module.physics;
+package be.yildizgames.module.physics.dummy;
 
 
 import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.geometry.Quaternion;
 import be.yildizgames.common.model.EntityId;
+import be.yildizgames.module.physics.DynamicBody;
+import be.yildizgames.module.physics.GhostObject;
+import be.yildizgames.module.physics.KinematicBody;
+import be.yildizgames.module.physics.StaticBody;
 
 /**
  * @author Grégory Van den Borre

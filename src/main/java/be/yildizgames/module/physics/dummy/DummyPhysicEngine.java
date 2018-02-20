@@ -22,11 +22,21 @@
  *
  */
 
-package be.yildizgames.module.physics;
+package be.yildizgames.module.physics.dummy;
 
 import be.yildizgames.common.gameobject.CollisionListener;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
+import be.yildizgames.module.physics.DynamicBody;
+import be.yildizgames.module.physics.GhostObject;
+import be.yildizgames.module.physics.Gravity;
+import be.yildizgames.module.physics.KinematicBody;
+import be.yildizgames.module.physics.PhysicEngine;
+import be.yildizgames.module.physics.PhysicObjectBuilder;
+import be.yildizgames.module.physics.PhysicWorld;
+import be.yildizgames.module.physics.RaycastResult;
+import be.yildizgames.module.physics.StaticBody;
+import be.yildizgames.module.physics.World;
 
 /**
  * dummy implementation for physic engine.
@@ -155,8 +165,9 @@ public final class DummyPhysicEngine extends PhysicEngine {
          * @param gravityValue Value, unused.
          */
         @Override
-        public void setGravity(final Gravity gravityValue) {
+        public World setGravity(final Gravity gravityValue) {
             //Dummy implementation.
+            return this;
         }
 
         /**
