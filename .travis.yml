@@ -1,21 +1,6 @@
-env:
-  global:
-    - secure: "e9tWbaMZWbz5YyCEcDriAfqslJ234Y7NEJYFZxcPUVybtStEztr2AqoMdBjdaSccsyiU8wA2ezj4LDdJg84j01CLoqkBl3/pw9hJgCz4SrHc7zgdH9ExJ314omDwcMoLuAJvZs2V35mFXd03LqISXO2auqP7EsZWQqkaqMmGKK4hAhK7zVCIWbVc1cwaocrd7weFSgrc+2ZuwrLcl3tKMyAj+xYELrXEfNQq8pVVgT59jBO4ue7xhqlS2sOH1vzNUyRIIQqU2y4RD4DdAV1stls/36McjcjllELmteJrHWm+E/yFTmq8paXw97A37MEGaO5yf9mjO+G7awabxg3cZ/hwBvKWFJRvTpr4UCDznDzwfLMnnAZB+h8uWiQFh8w/AOhNIT9s8KJgAhqdJzWCiHe870nz3D2y+VGA7y/mHRKI6K2J96MB4pNdHMIQweNmGKZfc6qRvLwR7By3E1e5B500IG1O2gTFlcITVTbxZimopKUDF1hBKOwxrXmi36svNtFkVxQEjj0IKJ9qRgdGXxicO0FA43koxLe/30Os3/ooDdBY/AEJY5LGKDqIs0oDF45IcrhuOnBI7OY1W9YXFmIZWkSWbu1UDzy3JMbKLdEVOaZ6VLyYH8gDbdjfttS0dD+iG9VKn4XXUDLFzQRxFyZb2e/Bk++NDTAK986MOSw="
-
-
 language: java
 jdk:
   - oraclejdk9
-
-addons:
-  coverity_scan:
-    project:
-      name: "yildiz-online/module-physics"
-      description: "Build submitted via Travis CI"
-    notification_email: vandenborre.gregory@hotmail.fr
-    build_command_prepend: "mvn clean"
-    build_command:   "mvn -DskipTests=true compile -s settings.xml"
-    branch_pattern: master
 
 script:
   - mvn -V -B -s settings.xml test
