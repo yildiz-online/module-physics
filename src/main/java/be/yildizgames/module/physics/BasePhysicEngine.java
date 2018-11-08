@@ -66,7 +66,6 @@ public abstract class BasePhysicEngine implements PhysicEngine {
     /**
      * Close the engine and free its resources.
      */
-    @Override
     public final void stop() {
         this.stop = true;
         this.worlds.forEach(PhysicWorld::delete);
@@ -76,7 +75,6 @@ public abstract class BasePhysicEngine implements PhysicEngine {
     /**
      * Create a new thread and run the engine.
      */
-    @Override
     public final void start() {
         new Thread(this::runEngine).start();
     }
