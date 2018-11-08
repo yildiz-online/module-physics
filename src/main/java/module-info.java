@@ -29,6 +29,5 @@ module be.yildizgames.module.physics {
     requires be.yildizgames.common.gameobject;
     requires be.yildizgames.common.shape;
 
-
     exports be.yildizgames.module.physics;
 }

@@ -24,7 +24,7 @@
 
 package be.yildizgames.module.physics.dummy;
 
-import be.yildizgames.module.physics.PhysicEngine;
+import be.yildizgames.module.physics.BasePhysicEngine;
 import be.yildizgames.module.physics.PhysicEngineProvider;
 
 /**
@@ -33,7 +33,7 @@ import be.yildizgames.module.physics.PhysicEngineProvider;
 public class DummyPhysicEngineProvider implements PhysicEngineProvider {
 
     @Override
-    public PhysicEngine getPhysicEngine() {
+    public BasePhysicEngine getPhysicEngine() {
         return new DummyPhysicEngine();
     }
 }

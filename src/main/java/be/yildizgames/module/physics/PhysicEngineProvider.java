@@ -30,6 +30,6 @@ package be.yildizgames.module.physics;
 @FunctionalInterface
 public interface PhysicEngineProvider {
 
-    PhysicEngine getPhysicEngine();
+    BasePhysicEngine getPhysicEngine();
 
 }

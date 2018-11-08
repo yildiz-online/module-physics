@@ -31,7 +31,7 @@ import be.yildizgames.module.physics.DynamicBody;
 import be.yildizgames.module.physics.GhostObject;
 import be.yildizgames.module.physics.Gravity;
 import be.yildizgames.module.physics.KinematicBody;
-import be.yildizgames.module.physics.PhysicEngine;
+import be.yildizgames.module.physics.BasePhysicEngine;
 import be.yildizgames.module.physics.PhysicObjectBuilder;
 import be.yildizgames.module.physics.PhysicWorld;
 import be.yildizgames.module.physics.RaycastResult;
@@ -43,7 +43,7 @@ import be.yildizgames.module.physics.World;
  *
  * @author Grégory Van den Borre
  */
-public final class DummyPhysicEngine extends PhysicEngine {
+public final class DummyPhysicEngine extends BasePhysicEngine {
 
     /**
      * Build a dummy physic engine.

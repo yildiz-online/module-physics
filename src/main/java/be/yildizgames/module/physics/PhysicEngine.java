@@ -21,87 +21,12 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  SOFTWARE.
  *
  */
-
 package be.yildizgames.module.physics;
 
-import be.yildizgames.module.physics.dummy.DummyPhysicEngineProvider;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ServiceLoader;
-
 /**
- * Abstract physic engine, create worlds, shape objects, physic bodies, manage collisions.
- *
  * @author Grégory Van den Borre
  */
-public abstract class PhysicEngine {
+public interface PhysicEngine {
 
-    /**
-     * List of existing worlds.
-     */
-    private final List<PhysicWorld> worlds = new ArrayList<>();
-
-    private boolean stop;
-
-    /**
-     * Build a new physic engine.
-     */
-    protected PhysicEngine() {
-        super();
-    }
-
-    public static PhysicEngine getEngine() {
-        ServiceLoader<PhysicEngineProvider> provider = ServiceLoader.load(PhysicEngineProvider.class);
-        return provider.findFirst().orElseGet(DummyPhysicEngineProvider::new).getPhysicEngine();
-    }
-
-    /**
-     * Update the physic world to its latest state.
-     */
-    public final void update() {
-        this.worlds.forEach(PhysicWorld::update);
-    }
-
-    /**
-     * Close the engine and free its resources.
-     */
-    public final void close() {
-        this.stop = true;
-        this.worlds.forEach(PhysicWorld::delete);
-        this.worlds.clear();
-    }
-
-    /**
-     * Create a new thread and run the engine.
-     */
-    public final PhysicEngine start() {
-        new Thread(this::runEngine).start();
-        return this;
-    }
-
-    /**
-     * Create a new world, a world is a portion of the game where entities interact each other. Entities from a world cannot interact with entities from am other world.
-     *
-     * @return The created physic world.
-     */
-    public final PhysicWorld createWorld() {
-        PhysicWorld w = this.createPhysicWorldImpl();
-        this.worlds.add(w);
-        return w;
-    }
-
-    /**
-     * Create a new world in implementation.
-     *
-     * @return The created world.
-     */
-    protected abstract PhysicWorld createPhysicWorldImpl();
-
-    private void runEngine() {
-        while(!this.stop) {
-            this.update();
-        }
-    }
-
+    PhysicWorld createWorld();
 }
