@@ -66,7 +66,7 @@ public abstract class BasePhysicEngine implements PhysicEngine {
     /**
      * Close the engine and free its resources.
      */
-    public final void stop() {
+    public final void close() {
         this.stop = true;
         this.worlds.forEach(PhysicWorld::delete);
         this.worlds.clear();
