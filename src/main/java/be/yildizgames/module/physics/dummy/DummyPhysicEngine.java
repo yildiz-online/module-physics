@@ -24,14 +24,15 @@
 
 package be.yildizgames.module.physics.dummy;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.gameobject.CollisionListener;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
+import be.yildizgames.module.physics.BasePhysicEngine;
 import be.yildizgames.module.physics.DynamicBody;
 import be.yildizgames.module.physics.GhostObject;
 import be.yildizgames.module.physics.Gravity;
 import be.yildizgames.module.physics.KinematicBody;
-import be.yildizgames.module.physics.BasePhysicEngine;
 import be.yildizgames.module.physics.PhysicObjectBuilder;
 import be.yildizgames.module.physics.PhysicWorld;
 import be.yildizgames.module.physics.RaycastResult;
@@ -132,8 +133,8 @@ public final class DummyPhysicEngine extends BasePhysicEngine {
          */
         @Override
         public RaycastResult throwRay(final Point3D origin, final Point3D destination) {
-            assert  origin != null;
-            assert  destination != null;
+            ImplementationException.throwForNull(origin);
+            ImplementationException.throwForNull(destination);
             return new RaycastResult(0, 0, 0, EntityId.WORLD.value);
         }
 

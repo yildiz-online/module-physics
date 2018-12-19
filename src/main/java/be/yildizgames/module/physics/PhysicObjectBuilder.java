@@ -24,6 +24,7 @@
 
 package be.yildizgames.module.physics;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.shape.Box;
@@ -56,7 +57,7 @@ public abstract class PhysicObjectBuilder {
     }
 
     public PhysicObjectBuilder withId(final EntityId id) {
-        assert id != null;
+        ImplementationException.throwForNull(id);
         this.id = id;
         return this;
     }

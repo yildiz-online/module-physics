@@ -25,6 +25,7 @@
 package be.yildizgames.module.physics;
 
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,7 +44,7 @@ class PhysicMeshTest {
 
     @Test
     void testConstructorNull() {
-        assertThrows(AssertionError.class, () -> new PhysicMesh(null));
+        assertThrows(ImplementationException.class, () -> new PhysicMesh(null));
     }
 
     @Test

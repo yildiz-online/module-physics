@@ -24,6 +24,7 @@
 
 package be.yildizgames.module.physics;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.model.EntityId;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -57,7 +58,7 @@ class PhysicObjectBuilderTest {
         @Test
         void withNullId() {
             PhysicObjectBuilder builder = givenABuilder();
-            assertThrows(AssertionError.class, () -> builder.withId(null));
+            assertThrows(ImplementationException.class, () -> builder.withId(null));
         }
 
     }

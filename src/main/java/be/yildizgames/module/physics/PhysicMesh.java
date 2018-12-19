@@ -24,6 +24,8 @@
 
 package be.yildizgames.module.physics;
 
+import be.yildizgames.common.exception.implementation.ImplementationException;
+
 /**
  * Contains the data for a physic mesh file.
  *
@@ -45,7 +47,7 @@ public final class PhysicMesh {
     //@Ensures this.file == path
     public PhysicMesh(final String path) {
         super();
-        assert path != null : "Path shouldnt be null";
+        ImplementationException.throwForNull(path);
         this.file = path;
     }
 
