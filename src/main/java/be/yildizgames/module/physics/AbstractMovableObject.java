@@ -27,9 +27,9 @@ package be.yildizgames.module.physics;
 import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.TreeSet;
 
 
 /**
@@ -40,7 +40,7 @@ public abstract class AbstractMovableObject implements Movable {
     /**
      * List of children objects.
      */
-    private final Set<Movable> children = new TreeSet<>();
+    private final Set<Movable> children = new HashSet<>();
 
     /**
      * Optional parent object.
