@@ -38,10 +38,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class AbstractStaticObjectTest {
 
     @Nested
-    class Constructor {
+    public class Constructor {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             Point3D pos = Point3D.valueOf(1,2,3);
             Point3D dir = Point3D.valueOf(4,5,6);
             AbstractStaticObject o = givenAStaticObject(pos, dir);
@@ -50,12 +50,12 @@ public class AbstractStaticObjectTest {
         }
 
         @Test
-        void withNullPos() {
+        public void withNullPos() {
             assertThrows(AssertionError.class, () -> givenAStaticObject(null, Point3D.valueOf(4,5,6)));
         }
 
         @Test
-        void withNullDir() {
+        public void withNullDir() {
             assertThrows(AssertionError.class, () -> givenAStaticObject(Point3D.valueOf(4,5,6), null));
         }
     }

@@ -39,24 +39,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class PhysicObjectBuilderTest {
 
     @Nested
-    class WithId {
+    public class WithId {
 
         @Test
-        void happyFlow() {
+        public void happyFlow() {
             PhysicObjectBuilder builder = givenABuilder();
             builder.withId(5);
             assertEquals(EntityId.valueOf(5), builder.id);
         }
 
         @Test
-        void happyFlowId() {
+        public void happyFlowId() {
             PhysicObjectBuilder builder = givenABuilder();
             builder.withId(EntityId.valueOf(3));
             assertEquals(EntityId.valueOf(3), builder.id);
         }
 
         @Test
-        void withNullId() {
+        public void withNullId() {
             PhysicObjectBuilder builder = givenABuilder();
             assertThrows(ImplementationException.class, () -> builder.withId(null));
         }
