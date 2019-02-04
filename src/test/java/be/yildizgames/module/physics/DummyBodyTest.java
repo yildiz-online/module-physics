@@ -36,60 +36,60 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author Grégory Van den Borre
  */
-class DummyBodyTest {
+public class DummyBodyTest {
 
     @Test
-    void testGetId() {
+    public void testGetId() {
         assertEquals(EntityId.WORLD, new DummyBody().getId());
     }
 
     @Test
-    void getPositionTest() {
+    public void getPositionTest() {
         assertEquals(Point3D.ZERO, new DummyBody().getPosition());
     }
 
     @Test
-    void getAbsolutePositionTest() {
+    public void getAbsolutePositionTest() {
         assertEquals(Point3D.ZERO, new DummyBody().getAbsolutePosition());
     }
 
     @Test
-    void getDirectionTest() {
+    public void getDirectionTest() {
         assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getDirection());
     }
 
     @Test
-    void getAbsoluteDirectionTest() {
+    public void getAbsoluteDirectionTest() {
         assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getAbsoluteDirection());
     }
 
     @Test
-    void attachToTest() {
+    public void attachToTest() {
         new DummyBody().attachTo(Mockito.mock(Movable.class));
     }
 
     @Test
-    void addChildTest() {
+    public void addChildTest() {
         new DummyBody().attachTo(Mockito.mock(Movable.class));
     }
 
     @Test
-    void detachTest() {
+    public void detachTest() {
         new DummyBody().detachFromParent();
     }
 
     @Test
-    void attachToOptionalTest() {
+    public void attachToOptionalTest() {
         new DummyBody().attachToOptional(Mockito.mock(Movable.class));
     }
 
     @Test
-    void setPositionTest() {
+    public void setPositionTest() {
         new DummyBody().setPosition(Point3D.ZERO);
     }
 
     @Test
-    void setDirectionTest() {
+    public void setDirectionTest() {
         new DummyBody().setDirection(Point3D.ZERO);
     }
 }

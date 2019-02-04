@@ -34,10 +34,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * @author Grégory Van den Borre
  */
-class RaycastResultTest {
+public class RaycastResultTest {
 
     @Test
-    void testFullConstructor() {
+    public void testFullConstructor() {
         RaycastResult r = new RaycastResult(10, 15, 20, 8L);
         assertNotNull(r.getContact());
         assertNotNull(r.getId());
@@ -46,7 +46,7 @@ class RaycastResultTest {
     }
 
     @Test
-    void testFullConstructorObject() {
+    public void testFullConstructorObject() {
         RaycastResult r = new RaycastResult(Point3D.valueOf(12, 7, 2), EntityId.valueOf(15L));
         assertNotNull(r.getContact());
         assertNotNull(r.getId());
