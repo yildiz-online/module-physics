@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class PhysicMeshTest {
+public class PhysicMeshTest {
 
     @Test
     void testConstructor() {

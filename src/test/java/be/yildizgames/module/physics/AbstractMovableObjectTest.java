@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class AbstractMovableObjectTest {
+public class AbstractMovableObjectTest {
 
     @Nested
     class SetPosition {

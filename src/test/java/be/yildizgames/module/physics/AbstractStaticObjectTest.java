@@ -35,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-class AbstractStaticObjectTest {
+public class AbstractStaticObjectTest {
 
     @Nested
     class Constructor {

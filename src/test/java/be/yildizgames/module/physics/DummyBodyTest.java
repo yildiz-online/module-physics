@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author Grégory Van den Borre
  */
-class DummyBodyTest {
+public class DummyBodyTest {
 
     @Test
     void testGetId() {

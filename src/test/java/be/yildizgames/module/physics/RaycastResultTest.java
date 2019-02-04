@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * @author Grégory Van den Borre
  */
-class RaycastResultTest {
+public class RaycastResultTest {
 
     @Test
     void testFullConstructor() {
