@@ -24,12 +24,10 @@
 
 package be.yildizgames.module.physics;
 
-import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.module.physics.dummy.DummyBody;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -63,33 +61,4 @@ public class DummyBodyTest {
         assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getAbsoluteDirection());
     }
 
-    @Test
-    public void attachToTest() {
-        new DummyBody().attachTo(Mockito.mock(Movable.class));
-    }
-
-    @Test
-    public void addChildTest() {
-        new DummyBody().attachTo(Mockito.mock(Movable.class));
-    }
-
-    @Test
-    public void detachTest() {
-        new DummyBody().detachFromParent();
-    }
-
-    @Test
-    public void attachToOptionalTest() {
-        new DummyBody().attachToOptional(Mockito.mock(Movable.class));
-    }
-
-    @Test
-    public void setPositionTest() {
-        new DummyBody().setPosition(Point3D.ZERO);
-    }
-
-    @Test
-    public void setDirectionTest() {
-        new DummyBody().setDirection(Point3D.ZERO);
-    }
 }
