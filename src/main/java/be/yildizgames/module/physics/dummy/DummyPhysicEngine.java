@@ -24,7 +24,6 @@
 
 package be.yildizgames.module.physics.dummy;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.gameobject.CollisionListener;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
@@ -38,6 +37,8 @@ import be.yildizgames.module.physics.PhysicWorld;
 import be.yildizgames.module.physics.RaycastResult;
 import be.yildizgames.module.physics.StaticBody;
 import be.yildizgames.module.physics.World;
+
+import java.util.Objects;
 
 /**
  * dummy implementation for physic engine.
@@ -133,8 +134,8 @@ public final class DummyPhysicEngine extends BasePhysicEngine {
          */
         @Override
         public RaycastResult throwRay(final Point3D origin, final Point3D destination) {
-            ImplementationException.throwForNull(origin);
-            ImplementationException.throwForNull(destination);
+            Objects.requireNonNull(origin);
+            Objects.requireNonNull(destination);
             return new RaycastResult(0, 0, 0, EntityId.WORLD.value);
         }
 

@@ -24,12 +24,13 @@
 
 package be.yildizgames.module.physics;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
 import be.yildizgames.common.shape.Box;
 import be.yildizgames.common.shape.Plane;
 import be.yildizgames.common.shape.Sphere;
+
+import java.util.Objects;
 
 /**
  * @author Grégory Van den Borre
@@ -57,7 +58,7 @@ public abstract class PhysicObjectBuilder {
     }
 
     public PhysicObjectBuilder withId(final EntityId id) {
-        ImplementationException.throwForNull(id);
+        Objects.requireNonNull(id);
         this.id = id;
         return this;
     }

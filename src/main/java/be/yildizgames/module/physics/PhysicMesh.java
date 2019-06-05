@@ -24,7 +24,7 @@
 
 package be.yildizgames.module.physics;
 
-import be.yildizgames.common.exception.implementation.ImplementationException;
+import java.util.Objects;
 
 /**
  * Contains the data for a physic mesh file.
@@ -42,12 +42,12 @@ public final class PhysicMesh {
      * Build a PhysicMesh object from a file path.
      *
      * @param path Path and name of the mesh to use.
-     * @throws AssertionError If path is null.
+     * @throws NullPointerException If path is null.
      */
     //@Ensures this.file == path
     public PhysicMesh(final String path) {
         super();
-        ImplementationException.throwForNull(path);
+        Objects.requireNonNull(path);
         this.file = path;
     }
 

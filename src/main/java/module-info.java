@@ -28,7 +28,6 @@ module be.yildizgames.module.physics {
     requires be.yildizgames.common.model;
     requires be.yildizgames.common.gameobject;
     requires be.yildizgames.common.shape;
-    requires be.yildizgames.common.exception;
 
     exports be.yildizgames.module.physics;
 }
