@@ -49,11 +49,13 @@ public class AbstractStaticObjectTest {
             assertEquals(dir, o.getDirection());
         }
 
+        @SuppressWarnings("ResultOfMethodCallIgnored")
         @Test
         public void withNullPos() {
             assertThrows(AssertionError.class, () -> givenAStaticObject(null, Point3D.valueOf(4,5,6)));
         }
 
+        @SuppressWarnings("ResultOfMethodCallIgnored")
         @Test
         public void withNullDir() {
             assertThrows(AssertionError.class, () -> givenAStaticObject(Point3D.valueOf(4,5,6), null));
