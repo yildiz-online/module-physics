@@ -50,7 +50,7 @@ public class AbstractMovableObjectTest {
 
         @Test
         public void withNullValue() {
-            assertThrows(AssertionError.class, () -> givenAMovable().setPosition(null));
+            assertThrows(NullPointerException.class, () -> givenAMovable().setPosition(null));
         }
 
         @Disabled
