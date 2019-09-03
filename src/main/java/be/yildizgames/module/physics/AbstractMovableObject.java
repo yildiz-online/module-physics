@@ -94,7 +94,6 @@ public abstract class AbstractMovableObject implements Movable {
 
     @Override
     public final void setPosition(Point3D newPosition) {
-        assert newPosition != null;
         this.setPosition(newPosition.x, newPosition.y, newPosition.z);
     }
 

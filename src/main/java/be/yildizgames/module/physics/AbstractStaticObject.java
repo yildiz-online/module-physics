@@ -27,6 +27,8 @@ package be.yildizgames.module.physics;
 import be.yildizgames.common.gameobject.Movable;
 import be.yildizgames.common.geometry.Point3D;
 
+import java.util.Objects;
+
 /**
  * @author Grégory Van den Borre
  */
@@ -50,8 +52,8 @@ public abstract class AbstractStaticObject implements Movable {
      */
     public AbstractStaticObject(final Point3D initialPosition, final Point3D initialDirection) {
         super();
-        assert initialPosition != null;
-        assert  initialDirection != null;
+        Objects.requireNonNull(initialDirection);
+        Objects.requireNonNull(initialDirection);
         this.position = initialPosition;
         this.direction = initialDirection;
     }

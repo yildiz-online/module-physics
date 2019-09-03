@@ -52,7 +52,7 @@ public abstract class BasePhysicEngine implements PhysicEngine {
     }
 
     public static BasePhysicEngine getEngine() {
-        ServiceLoader<PhysicEngineProvider> provider = ServiceLoader.load(PhysicEngineProvider.class);
+        var provider = ServiceLoader.load(PhysicEngineProvider.class);
         return provider.findFirst().orElseGet(DummyPhysicEngineProvider::new).getPhysicEngine();
     }
 
@@ -86,7 +86,7 @@ public abstract class BasePhysicEngine implements PhysicEngine {
      */
     @Override
     public final PhysicWorld createWorld() {
-        PhysicWorld w = this.createPhysicWorldImpl();
+        var w = this.createPhysicWorldImpl();
         this.worlds.add(w);
         return w;
     }
