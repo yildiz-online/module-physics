@@ -52,7 +52,7 @@ public abstract class AbstractStaticObject implements Movable {
      */
     public AbstractStaticObject(final Point3D initialPosition, final Point3D initialDirection) {
         super();
-        Objects.requireNonNull(initialDirection);
+        Objects.requireNonNull(initialPosition);
         Objects.requireNonNull(initialDirection);
         this.position = initialPosition;
         this.direction = initialDirection;
