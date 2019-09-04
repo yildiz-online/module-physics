@@ -47,8 +47,7 @@ public final class PhysicMesh {
     //@Ensures this.file == path
     public PhysicMesh(final String path) {
         super();
-        Objects.requireNonNull(path);
-        this.file = path;
+        this.file = Objects.requireNonNull(path);
     }
 
     /**

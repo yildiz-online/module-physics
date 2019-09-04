@@ -58,8 +58,7 @@ public abstract class PhysicObjectBuilder {
     }
 
     public PhysicObjectBuilder withId(final EntityId id) {
-        Objects.requireNonNull(id);
-        this.id = id;
+        this.id = Objects.requireNonNull(id);
         return this;
     }
 
