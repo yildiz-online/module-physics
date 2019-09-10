@@ -33,21 +33,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-public class PhysicMeshTest {
+class PhysicMeshTest {
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         PhysicMesh p = new PhysicMesh("abc");
         assertEquals("abc", p.file);
     }
 
     @Test
-    public void testConstructorNull() {
+    void testConstructorNull() {
         assertThrows(NullPointerException.class, () -> new PhysicMesh(null));
     }
 
     @Test
-    public void testToString() {
+    void testToString() {
         PhysicMesh p = new PhysicMesh("abcdef");
         assertEquals("Physic mesh:abcdef", p.toString());
     }

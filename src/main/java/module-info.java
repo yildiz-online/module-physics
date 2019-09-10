@@ -22,7 +22,7 @@
  *
  */
 
-module be.yildizgames.module.physics {
+open module be.yildizgames.module.physics {
 
     requires be.yildizgames.common.geometry;
     requires be.yildizgames.common.model;

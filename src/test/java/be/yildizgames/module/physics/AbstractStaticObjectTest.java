@@ -35,13 +35,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-public class AbstractStaticObjectTest {
+class AbstractStaticObjectTest {
 
     @Nested
-    public class Constructor {
+    class Constructor {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             Point3D pos = Point3D.valueOf(1,2,3);
             Point3D dir = Point3D.valueOf(4,5,6);
             AbstractStaticObject o = givenAStaticObject(pos, dir);
@@ -49,15 +49,13 @@ public class AbstractStaticObjectTest {
             assertEquals(dir, o.getDirection());
         }
 
-        @SuppressWarnings("ResultOfMethodCallIgnored")
         @Test
-        public void withNullPos() {
+        void withNullPos() {
             assertThrows(NullPointerException.class, () -> givenAStaticObject(null, Point3D.valueOf(4,5,6)));
         }
 
-        @SuppressWarnings("ResultOfMethodCallIgnored")
         @Test
-        public void withNullDir() {
+        void withNullDir() {
             assertThrows(NullPointerException.class, () -> givenAStaticObject(Point3D.valueOf(4,5,6), null));
         }
     }

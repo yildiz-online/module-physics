@@ -34,30 +34,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author Grégory Van den Borre
  */
-public class DummyBodyTest {
+class DummyBodyTest {
 
     @Test
-    public void testGetId() {
+    void testGetId() {
         assertEquals(EntityId.WORLD, new DummyBody().getId());
     }
 
     @Test
-    public void getPositionTest() {
+    void getPositionTest() {
         assertEquals(Point3D.ZERO, new DummyBody().getPosition());
     }
 
     @Test
-    public void getAbsolutePositionTest() {
+    void getAbsolutePositionTest() {
         assertEquals(Point3D.ZERO, new DummyBody().getAbsolutePosition());
     }
 
     @Test
-    public void getDirectionTest() {
+    void getDirectionTest() {
         assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getDirection());
     }
 
     @Test
-    public void getAbsoluteDirectionTest() {
+    void getAbsoluteDirectionTest() {
         assertEquals(Point3D.BASE_DIRECTION, new DummyBody().getAbsoluteDirection());
     }
 

@@ -36,26 +36,26 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * @author Grégory Van den Borre
  */
-public class AbstractMovableObjectTest {
+class AbstractMovableObjectTest {
 
     @Nested
-    public class SetPosition {
+    class SetPosition {
 
         @Test
-        public void happyFlow() {
+        void happyFlow() {
             AbstractMovableObject o = givenAMovable();
             o.setPosition(Point3D.valueOf(1,2,3));
             assertEquals(Point3D.valueOf(1,2,3), o.getPosition());
         }
 
         @Test
-        public void withNullValue() {
+        void withNullValue() {
             assertThrows(NullPointerException.class, () -> givenAMovable().setPosition(null));
         }
 
         @Disabled
         @Test
-        public void withChild() {
+        void withChild() {
             AbstractMovableObject child = givenAMovable();
             child.setPosition(Point3D.valueOf(1,2,3));
             AbstractMovableObject parent = givenAMovable();
