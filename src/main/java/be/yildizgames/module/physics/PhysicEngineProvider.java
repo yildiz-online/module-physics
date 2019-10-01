@@ -24,12 +24,15 @@
 
 package be.yildizgames.module.physics;
 
+import org.apiguardian.api.API;
+
 /**
  * @author Grégory Van den Borre
  */
 @FunctionalInterface
 public interface PhysicEngineProvider {
 
+    @API(status= API.Status.STABLE)
     BasePhysicEngine getPhysicEngine();
 
 }

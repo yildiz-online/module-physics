@@ -26,6 +26,7 @@ package be.yildizgames.module.physics;
 
 import be.yildizgames.common.geometry.Point3D;
 import be.yildizgames.common.model.EntityId;
+import org.apiguardian.api.API;
 
 /**
  * Contains the result of a ray collision.
@@ -76,10 +77,12 @@ public final class RaycastResult {
         this.id = id;
     }
 
+    @API(status= API.Status.STABLE)
     public Point3D getContact() {
         return contact;
     }
 
+    @API(status= API.Status.STABLE)
     public EntityId getId() {
         return id;
     }

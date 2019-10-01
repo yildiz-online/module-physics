@@ -28,6 +28,7 @@ open module be.yildizgames.module.physics {
     requires be.yildizgames.common.model;
     requires be.yildizgames.common.gameobject;
     requires be.yildizgames.common.shape;
+    requires org.apiguardian.api;
 
     exports be.yildizgames.module.physics;
 }

@@ -23,10 +23,13 @@
  */
 package be.yildizgames.module.physics;
 
+import org.apiguardian.api.API;
+
 /**
  * @author Grégory Van den Borre
  */
 public interface PhysicEngine {
 
+    @API(status= API.Status.STABLE)
     PhysicWorld createWorld();
 }
