@@ -119,12 +119,12 @@ public abstract class AbstractMovableObject implements Movable {
 
     @Override
     public final void addOptionalChild(Movable child) {
-        //TODO do
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     @Override
     public final void removeChild(Movable child) {
-        //TODO do
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
 }
